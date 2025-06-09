@@ -84,6 +84,26 @@ public class Komunikacija {
 
     public void dodajInstruktora(Instruktor i) {
         
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_INSTRUKTORA, i);
+        posiljalac.posalji(zahtev);
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if(odgovor.getOdgovor()==null){
+            System.out.println("USPEH");
+        }else{
+            System.out.println("GRESKA");
+        }
+    }
+
+    public void azurirajInstruktora(Instruktor i) {
+        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_INSTRUKTORA, i);
+        posiljalac.posalji(zahtev);
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if(odgovor.getOdgovor()==null){
+            System.out.println("USPEH");
+            cordinator.Cordinator.getInstance().osveziFormu();
+        }else{
+            System.out.println("GRESKA");
+        }
     }
     
 }

@@ -6,6 +6,8 @@ package controller;
 
 import domen.Instruktor;
 import java.util.List;
+import operacije.instruktori.AzurirajInstruktoraSO;
+import operacije.instruktori.KreirajInstruktoraSO;
 import operacije.instruktori.UcitajInstruktoreSO;
 import operacije.instruktori.ObrisiInstruktoraSO;
 import operacije.login.LoginOperacija;
@@ -47,6 +49,16 @@ public class Controller {
     public void obrisiInstruktora(Instruktor i) throws Exception {
         ObrisiInstruktoraSO operacija =new ObrisiInstruktoraSO();
         operacija.izvrsi(i, null);
+    }
+
+    public void dodajInstruktora(Instruktor instruktor) throws Exception {
+        KreirajInstruktoraSO operacija = new KreirajInstruktoraSO();
+        operacija.izvrsi(instruktor, null);
+    }
+
+    public void azurirajInstruktora(Instruktor instruktor) throws Exception {
+        AzurirajInstruktoraSO operacija = new AzurirajInstruktoraSO();
+        operacija.izvrsi(instruktor, null);
     }
     
 }

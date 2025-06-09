@@ -49,6 +49,49 @@ public class PrikazInstruktoraController {
             }
         });
         
+        
+        pif.addBtnAzurirajActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int red = pif.getjTableInstruktori().getSelectedRow();
+                if(red==-1){
+                    JOptionPane.showMessageDialog(pif, "Sistem ne moze da obrise instruktora", "GRESKA", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    ModelTabeleInstruktor mti = (ModelTabeleInstruktor) pif.getjTableInstruktori().getModel();
+                    Instruktor i = mti.getLista().get(red);
+                    cordinator.Cordinator.getInstance().dodajParam("instruktor", i);
+                    cordinator.Cordinator.getInstance().otvoriIzmeniInstruktoraForma();
+                            
+                    
+                }
+                
+                
+            }
+        });
+        
+        
+        pif.addBtnPretraziActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String ime = pif.getjTextFieldIme().getText().trim();
+                String prezime = pif.getjTextFieldPrezime().getText().trim();
+                
+                ModelTabeleInstruktor mti = (ModelTabeleInstruktor) pif.getjTableInstruktori().getModel();
+                mti.pretrazi(ime,prezime);
+                
+            }
+        });
+        
+        
+                pif.addBtnResetujActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pripremiFormu();
+                
+            }
+            
+        });
+        
     }
 
     public void otvoriFormu() {
@@ -57,10 +100,14 @@ public class PrikazInstruktoraController {
         
     }
 
-    private void pripremiFormu() {
+    public void pripremiFormu() {
         List<Instruktor> instruktori = komunikacija.Komunikacija.getInstance().ucitajInstruktore();
         ModelTabeleInstruktor mti = new ModelTabeleInstruktor(instruktori);
         pif.getjTableInstruktori().setModel(mti);
+    }
+
+    public void osveziFormu() {
+        pripremiFormu();
     }
     
 }

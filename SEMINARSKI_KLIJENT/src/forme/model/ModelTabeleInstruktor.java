@@ -6,6 +6,7 @@ package forme.model;
 
 import domen.Instruktor;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -59,6 +60,16 @@ public class ModelTabeleInstruktor extends AbstractTableModel{
 
     public List<Instruktor> getLista() {
         return lista;
+    }
+
+    public void pretrazi(String ime, String prezime) {
+        List<Instruktor> filteredList = lista.stream()
+            .filter(i -> (ime == null || ime.isEmpty() || i.getIme().toLowerCase().contains(ime.toLowerCase())))
+            .filter(i -> (prezime == null || prezime.isEmpty() || i.getPrezime().toLowerCase().contains(prezime.toLowerCase())))
+            .collect(Collectors.toList());
+        this.lista = filteredList;
+        fireTableDataChanged();
+               
     }
     
     

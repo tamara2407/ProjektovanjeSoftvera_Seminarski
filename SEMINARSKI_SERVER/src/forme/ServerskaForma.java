@@ -4,6 +4,7 @@
  */
 package forme;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -138,6 +139,7 @@ public class ServerskaForma extends javax.swing.JFrame {
     private void jButtonPOKRENIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPOKRENIActionPerformed
         server.start();
         jLabelSTATUS.setText("POKRENUT");
+        jLabelSTATUS.setForeground(Color.GREEN);
         jButtonZAUSTAVI.setEnabled(true);
         jButtonPOKRENI.setEnabled(false);
     }//GEN-LAST:event_jButtonPOKRENIActionPerformed
@@ -145,6 +147,7 @@ public class ServerskaForma extends javax.swing.JFrame {
     private void jButtonZAUSTAVIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZAUSTAVIActionPerformed
         server.zaustaviServer();
         jLabelSTATUS.setText("ZAUSTAVLJEN");
+        jLabelSTATUS.setForeground(Color.RED);
         jButtonZAUSTAVI.setEnabled(false);
         jButtonPOKRENI.setEnabled(true);
     }//GEN-LAST:event_jButtonZAUSTAVIActionPerformed

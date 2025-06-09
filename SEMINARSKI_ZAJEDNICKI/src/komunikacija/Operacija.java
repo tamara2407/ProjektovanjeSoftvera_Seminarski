@@ -12,6 +12,10 @@ import java.io.Serializable;
  */
 public enum Operacija implements Serializable {
     
-    LOGIN, UCITAJ_INSTRUKTORE, OBRISI_INSTRUKTORA
+    LOGIN, 
+    UCITAJ_INSTRUKTORE, 
+    OBRISI_INSTRUKTORA, 
+    DODAJ_INSTRUKTORA,
+    AZURIRAJ_INSTRUKTORA
     
 }

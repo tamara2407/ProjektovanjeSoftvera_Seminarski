@@ -10,9 +10,13 @@ import controller.LoginController;
 import controller.PrikazInstruktoraController;
 import domen.Instruktor;
 import forme.DodajInstruktoraForma;
+import forme.FormaMod;
 import forme.GlavnaForma;
 import forme.LoginForma;
 import forme.PrikazInstruktoraForma;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  *
@@ -20,15 +24,19 @@ import forme.PrikazInstruktoraForma;
  */
 public class Cordinator {
     private static Cordinator instance;
+
+    
     private Instruktor ulogovani;
     private LoginController loginController;
     private GlavnaFormaController glavnaFormaController;
     private PrikazInstruktoraController prikazInstruktoraController;
     private DodajInstruktoraController dodajInstruktoraController;
+    private Map<String, Object> parametri;
     
     
     
     private Cordinator(){
+        parametri = new HashMap<>();
     
     }
     
@@ -64,11 +72,26 @@ public class Cordinator {
 
     public void otvoriDodajInstruktoraFormu() {
         dodajInstruktoraController = new DodajInstruktoraController(new DodajInstruktoraForma());
-        dodajInstruktoraController.otvoriFormu();
+        dodajInstruktoraController.otvoriFormu(FormaMod.DODAJ);
     }   
+
     
-    
-    
+   public void dodajParam(String s, Object o){
+       parametri.put(s, o);
+   }
+   
+   public Object vratiParam(String s){
+       return parametri.get(s);
+   }
+
+    public void otvoriIzmeniInstruktoraForma() {
+        dodajInstruktoraController = new DodajInstruktoraController(new DodajInstruktoraForma());
+        dodajInstruktoraController.otvoriFormu(FormaMod.IZMENI);
+    }
+
+    public void osveziFormu() {
+        prikazInstruktoraController.osveziFormu();
+    }
     
     
 }

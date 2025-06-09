@@ -62,6 +62,18 @@ public class ObradaKlijentskihZahteva extends Thread {
                         }
                         break;
                         
+                    case DODAJ_INSTRUKTORA:
+                        Instruktor instruktor = (Instruktor) zahtev.getParametar();
+                        controller.Controller.getInstance().dodajInstruktora(instruktor);
+                        odgovor.setOdgovor(null);
+                        break;
+                        
+                    case AZURIRAJ_INSTRUKTORA:
+                        Instruktor Ainstruktor = (Instruktor) zahtev.getParametar();
+                        controller.Controller.getInstance().azurirajInstruktora(Ainstruktor);
+                        odgovor.setOdgovor(null);
+                        break;
+                        
                     default: System.out.println("GRESKA, TA OPERACIJA NE POSTOJI");
                     
                 }
