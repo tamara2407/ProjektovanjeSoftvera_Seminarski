@@ -24,7 +24,10 @@ import operacije.kategorija.ObrisiKategorijuSO;
 import operacije.kategorija.UcitajKategorijeSO;
 import operacije.kategorija.KreirajKategorijuSO;
 import operacije.login.LoginOperacija;
+import operacije.polaznik.IzmeniPolaznikaSO;
 import operacije.polaznik.KreirajPolaznikaSO;
+import operacije.polaznik.ObrisiPolaznikaSO;
+import operacije.polaznik.UcitajPolaznikeSO;
 
 /**
  *
@@ -128,6 +131,24 @@ public class Controller {
 
     public void azurirajKategoriju(Kategorija Akategorija) throws Exception {
         AzurirajKategorijuSO operacija = new AzurirajKategorijuSO();
-        operacija.izvrsi(Akategorija, null);    }
+        operacija.izvrsi(Akategorija, null);    
+    }
+
+    public void obrisiPolaznika(Polaznik oPolaznik) throws Exception {
+        ObrisiPolaznikaSO operacija =new ObrisiPolaznikaSO();
+        operacija.izvrsi(oPolaznik, null);    
+    }
+
+    public List<Polaznik> ucitajPolaznike() throws Exception {
+        UcitajPolaznikeSO operacija =new UcitajPolaznikeSO();
+        operacija.izvrsi(null, null);
+        System.out.println("KLASA CONTROLLER: "+operacija.getPolaznike());
+        return operacija.getPolaznike();
+    }
+
+    public void azurirajPolaznika(Polaznik aPolaznik) throws Exception {
+        IzmeniPolaznikaSO operacija = new IzmeniPolaznikaSO();
+        operacija.izvrsi(aPolaznik, null);    
+    }
     
 }

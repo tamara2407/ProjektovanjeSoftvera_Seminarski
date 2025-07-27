@@ -120,20 +120,17 @@ public class Komunikacija {
         
     }
 
-//    public void dodajPolaznika(Polaznik p) {
-//        Zahtev zahtev = new Zahtev(Operacija.DODAJ_POLAZNIKA, p);
-//        posiljalac.posalji(zahtev);
-//        Odgovor odgovor = (Odgovor) primalac.primi();
-//        if(odgovor.getOdgovor()==null){
-//            System.out.println("USPEH");
-//        }else{
-//            System.out.println("GRESKA");
-//        }
-//    }
-//
-//    public void azurirajPolaznika(Polaznik p) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
+    public void dodajPolaznika(Polaznik p) {
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_POLAZNIKA, p);
+        posiljalac.posalji(zahtev);
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if(odgovor.getOdgovor()==null){
+            System.out.println("USPEH");
+        }else{
+            System.out.println("GRESKA");
+        }
+    }
+
 
     public void dodajFiguru(Figura f) {
         Zahtev zahtev = new Zahtev(Operacija.DODAJ_FIGURU, f);
@@ -227,6 +224,44 @@ public class Komunikacija {
             System.out.println("GRESKA");
         }
     }
+
+    public void obrisiPolaznika(Polaznik p) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.OBRISI_POLAZNIKA,p);
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odg = (Odgovor) primalac.primi();
+        if(odg.getOdgovor()==null){
+            System.out.println("USPESNO");
+        }else{
+            System.out.println("GRESKA");
+            ((Exception)odg.getOdgovor()).printStackTrace();
+            throw new Exception("GRESKA");
+        }
+    }
+
+    public List<Polaznik> ucitajPolaznike() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_POLAZNIKE,null);
+        List<Polaznik> polaznici = new ArrayList<>();
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        polaznici = (List<Polaznik>) odg.getOdgovor();
+        return polaznici;
+    }
+
+    public void azurirajPolaznika(Polaznik p) {
+        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_POLAZNIKA, p);
+        posiljalac.posalji(zahtev);
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if(odgovor.getOdgovor()==null){
+            System.out.println("USPEH");
+            cordinator.Cordinator.getInstance().osveziFormuPolaznik();
+        }else{
+            System.out.println("GRESKA");
+        }
+        
+    }
+
+
 
     
 }

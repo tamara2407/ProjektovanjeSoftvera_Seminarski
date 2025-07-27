@@ -27,5 +27,8 @@ public enum Operacija implements Serializable {
     OBRISI_KATEGORIJU,
     DODAJ_KATEGORIJU,
     AZURIRAJ_KATEGORIJU,
+    OBRISI_POLAZNIKA,
+    UCITAJ_POLAZNIKE,
+    AZURIRAJ_POLAZNIKA,
     
 }

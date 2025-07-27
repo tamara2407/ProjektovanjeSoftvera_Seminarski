@@ -7,6 +7,7 @@ package cordinator;
 import controller.DodajFiguruController;
 import controller.DodajInstruktoraController;
 import controller.DodajKategorijuController;
+import controller.DodajPolaznikaController;
 //import controller.DodajPolaznikaController;
 import controller.GlavnaFormaController;
 import controller.LoginController;
@@ -14,6 +15,7 @@ import controller.PrikazEvidencijeRadioniceController;
 import controller.PrikazFiguraController;
 import controller.PrikazInstruktoraController;
 import controller.PrikazKategorijeController;
+import controller.PrikazPolaznikaController;
 import domen.Instruktor;
 import forme.DodajFiguruForma;
 import forme.DodajInstruktoraForma;
@@ -26,6 +28,7 @@ import forme.PrikazEvidencijeRadioniceForma;
 import forme.PrikazFiguraForma;
 import forme.PrikazInstruktoraForma;
 import forme.PrikazKategorijeForma;
+import forme.PrikazPolaznikaForma;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +47,8 @@ public class Cordinator {
     private PrikazInstruktoraController prikazInstruktoraController;
     private DodajInstruktoraController dodajInstruktoraController;
     private PrikazEvidencijeRadioniceController prikazEvidencijeRadioniceController;
-//    private DodajPolaznikaController dodajPolaznikaController;
+    private DodajPolaznikaController dodajPolaznikaController;
+    private PrikazPolaznikaController prikazPolaznikaController;
     private DodajFiguruController dodajFiguruController;
     private PrikazFiguraController prikazFiguraController;
     private PrikazKategorijeController prikazKategorijeController;
@@ -99,10 +103,10 @@ public class Cordinator {
         prikazEvidencijeRadioniceController.otvoriFormu(); 
     }
    
-//        public void otvoriDodajPolaznikaFormu() {
-//        dodajPolaznikaController = new DodajPolaznikaController(new DodajPolaznikaForma());
-//        dodajPolaznikaController.otvoriFormu(FormaMod.DODAJ);    
-//        }
+        public void otvoriDodajPolaznikaFormu() {
+        dodajPolaznikaController = new DodajPolaznikaController(new DodajPolaznikaForma());
+        dodajPolaznikaController.otvoriFormu(FormaMod.DODAJ);    
+        }
     
     
     public void otvoriDodajFiguruFormu() {
@@ -135,6 +139,16 @@ public class Cordinator {
         dodajKategorijuController.otvoriFormu(FormaMod.IZMENI);
     }
     
+    public void otvoriPrikazPolaznikaFormu() {
+        prikazPolaznikaController = new PrikazPolaznikaController(new PrikazPolaznikaForma());
+        prikazPolaznikaController.otvoriFormu();
+    }
+    
+    public void otvoriIzmeniPolaznikaFormu() {
+        dodajPolaznikaController = new DodajPolaznikaController(new DodajPolaznikaForma());
+        dodajPolaznikaController.otvoriFormu(FormaMod.IZMENI);    }
+    
+    
     
     public void dodajParam(String s, Object o){
        parametri.put(s, o);
@@ -143,6 +157,14 @@ public class Cordinator {
    public Object vratiParam(String s){
        return parametri.get(s);
    }
+   
+    public Instruktor getUlogovani() {
+        return ulogovani;
+    }
+
+    public void setUlogovani(Instruktor ulogovani) {
+        this.ulogovani = ulogovani;
+    }
 
     public void osveziFormuInstruktor() {
         prikazInstruktoraController.osveziFormu();
@@ -156,14 +178,18 @@ public class Cordinator {
         prikazKategorijeController.osveziFormu();    
     }
     
+    public void osveziFormuPolaznik() {
+        prikazPolaznikaController.osveziFormu();
+    }
     
-    public Instruktor getUlogovani() {
-        return ulogovani;
-    }
 
-    public void setUlogovani(Instruktor ulogovani) {
-        this.ulogovani = ulogovani;
-    }
+
+
+
+
+
+
+
 
 
 

@@ -85,11 +85,7 @@ public class ObradaKlijentskihZahteva extends Thread {
 //                        odgovor.setOdgovor(evidencijeRadionica);
 //                        break;
                         
-                    case DODAJ_POLAZNIKA:
-                        Polaznik polaznik = (Polaznik) zahtev.getParametar();
-                        controller.Controller.getInstance().dodajPolaznika(polaznik);
-                        odgovor.setOdgovor(null);
-                        break;
+
                         
                     case DODAJ_FIGURU:
                         Figura figura = (Figura) zahtev.getParametar();
@@ -142,6 +138,33 @@ public class ObradaKlijentskihZahteva extends Thread {
                     case AZURIRAJ_KATEGORIJU:
                         Kategorija Akategorija = (Kategorija) zahtev.getParametar();
                         controller.Controller.getInstance().azurirajKategoriju(Akategorija);
+                        odgovor.setOdgovor(null);
+                        break;
+                        
+                    case OBRISI_POLAZNIKA:
+                        try{
+                        Polaznik oPolaznik = (Polaznik) zahtev.getParametar();
+                        controller.Controller.getInstance().obrisiPolaznika(oPolaznik);
+                        odgovor.setOdgovor(null);
+                        }catch(Exception e){
+                           odgovor.setOdgovor(e);
+                        }
+                        break;
+                        
+                    case UCITAJ_POLAZNIKE:
+                        List<Polaznik> polaznici = controller.Controller.getInstance().ucitajPolaznike();  
+                        odgovor.setOdgovor(polaznici);
+                        break;
+                        
+                    case DODAJ_POLAZNIKA:
+                        Polaznik polaznik = (Polaznik) zahtev.getParametar();
+                        controller.Controller.getInstance().dodajPolaznika(polaznik);
+                        odgovor.setOdgovor(null);
+                        break;
+                        
+                    case AZURIRAJ_POLAZNIKA:
+                        Polaznik aPolaznik = (Polaznik) zahtev.getParametar();
+                        controller.Controller.getInstance().azurirajPolaznika(aPolaznik);
                         odgovor.setOdgovor(null);
                         break;
                         

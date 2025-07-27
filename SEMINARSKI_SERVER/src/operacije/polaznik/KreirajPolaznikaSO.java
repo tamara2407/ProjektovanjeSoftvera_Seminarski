@@ -5,6 +5,7 @@
 package operacije.polaznik;
 
 import domen.Polaznik;
+import java.util.List;
 import operacije.ApstraktnaGenerickaOperacija;
 
 /**
@@ -15,18 +16,22 @@ public class KreirajPolaznikaSO extends ApstraktnaGenerickaOperacija{
 
     @Override
     protected void preduslovi(Object param) throws Exception {
-        if(param==null || !(param instanceof Polaznik)){
-        throw new Exception("Sistem ne može da doda polaznika");
+        if (param == null || !(param instanceof Polaznik)) {
+
+            throw new Exception("Sistem ne moze da kreira kupca");
         }
-        Polaznik i = (Polaznik) param;
-        if(i.getIme()==null || i.getIme().isEmpty()){
-            throw new Exception("Greška ime");
-        }
-        if(i.getPrezime()==null || i.getPrezime().isEmpty()){
-            throw new Exception("Greška prezime");
-        }
-        if(i.getEmail()==null || !(i.getEmail().contains("@"))){
-            throw new Exception("Greška email");
+        Polaznik noviPolaznik = (Polaznik) param;
+
+        String uslov = " JOIN kategorija ON polaznik.kategorija = kategorija.kategorijaID WHERE email = '" + noviPolaznik.getEmail() + "'";
+        List<Polaznik> sviPolaznici = broker.getAll(noviPolaznik, uslov);
+
+        /* for (Kupac k : sviKupci) {
+            if (k.getEmail().equalsIgnoreCase(noviKupac.getEmail())) {
+                throw new KupacVecPostojiException("Kupac sa tim email-om već postoji.");
+            }
+        }*/
+        if (!sviPolaznici.isEmpty()) {
+            System.out.println("GRESKA");
         }
 
     }

@@ -4,6 +4,7 @@
  */
 package forme;
 
+import domen.Kategorija;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -59,8 +60,6 @@ public class DodajPolaznikaForma extends javax.swing.JFrame {
         jLabel3.setText("Email:");
 
         jLabel4.setText("Kategorija:");
-
-        jComboBoxKategorija.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,7 +133,7 @@ public class DodajPolaznikaForma extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAzuriraj;
     private javax.swing.JButton jButtonDodaj;
-    private javax.swing.JComboBox<String> jComboBoxKategorija;
+    private javax.swing.JComboBox<Kategorija> jComboBoxKategorija;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -146,10 +145,10 @@ public class DodajPolaznikaForma extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPrezime;
     // End of variables declaration//GEN-END:variables
 
-public void dodajInstruktoraAddActionListener(ActionListener actionListener) {
+public void dodajAddActionListener(ActionListener actionListener) {
         jButtonDodaj.addActionListener(actionListener);
     }
-    public void izmeniInstruktoraAddActionListener(ActionListener actionListener) {
+    public void izmeniAddActionListener(ActionListener actionListener) {
         jButtonAzuriraj.addActionListener(actionListener);
     }
 
@@ -202,13 +201,15 @@ public void dodajInstruktoraAddActionListener(ActionListener actionListener) {
         this.jTextFieldPrezime = jTextFieldPrezime;
     }
 
-    public JComboBox<String> getjComboBoxKategorija() {
+    public JComboBox<Kategorija> getjComboBoxKategorija() {
         return jComboBoxKategorija;
     }
 
-    public void setjComboBoxKategorija(JComboBox<String> jComboBoxKategorija) {
+    public void setjComboBoxKategorija(JComboBox<Kategorija> jComboBoxKategorija) {
         this.jComboBoxKategorija = jComboBoxKategorija;
     }
+
+
     
     
     
