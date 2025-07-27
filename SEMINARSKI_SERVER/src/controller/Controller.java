@@ -81,8 +81,8 @@ public class Controller {
     public List<EvidencijaRadionice> ucitajEvidencijeRadionica() throws Exception {
         UcitajEvidencijeRadionicaSO operacija =new UcitajEvidencijeRadionicaSO();
         operacija.izvrsi(null, null);
-        System.out.println("KLASA CONTROLLER: "+operacija.getEvidencijeRadionica());
-        return operacija.getEvidencijeRadionica();       
+        System.out.println("KLASA CONTROLLER: "+operacija.getEvidencije());
+        return operacija.getEvidencije();       
     }
 
     public void dodajPolaznika(Polaznik polaznik) throws Exception {

@@ -20,6 +20,9 @@ public class PrikazInstruktoraForma extends javax.swing.JFrame {
      */
     public PrikazInstruktoraForma() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     /**

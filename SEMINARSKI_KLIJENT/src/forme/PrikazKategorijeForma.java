@@ -20,6 +20,9 @@ public class PrikazKategorijeForma extends javax.swing.JFrame {
      */
     public PrikazKategorijeForma() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     /**

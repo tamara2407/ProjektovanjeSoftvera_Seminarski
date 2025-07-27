@@ -14,19 +14,21 @@ import operacije.ApstraktnaGenerickaOperacija;
  */
 public class UcitajEvidencijeRadionicaSO extends ApstraktnaGenerickaOperacija {
 
-    List<EvidencijaRadionice> evidencijeRadionica;
-    
+    private List<EvidencijaRadionice> evidencije;
+
     @Override
     protected void preduslovi(Object param) throws Exception {
+
     }
 
     @Override
     protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
-        evidencijeRadionica = broker.getAll(new EvidencijaRadionice(),"");
+        String uslov = " JOIN polaznik ON evidencijaradionice.polaznik = polaznik.polaznikID JOIN instruktor ON evidencijaradionice.instruktor = instruktor.instruktorID JOIN kategorija ON polaznik.kategorija = kategorija.kategorijaID";
+        evidencije = broker.getAll(new EvidencijaRadionice(), uslov);
     }
 
-    public List<EvidencijaRadionice> getEvidencijeRadionica() {
-        return evidencijeRadionica;
+    public List<EvidencijaRadionice> getEvidencije() {
+        return evidencije;
     }
     
     

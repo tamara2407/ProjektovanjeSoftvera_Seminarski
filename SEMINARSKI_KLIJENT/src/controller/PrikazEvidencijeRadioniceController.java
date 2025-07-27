@@ -5,9 +5,13 @@
 package controller;
 
 import domen.EvidencijaRadionice;
+import domen.Instruktor;
 import forme.PrikazEvidencijeRadioniceForma;
-import forme.model.ModelTabeleEvidencijaRadionice;
+import forme.model.ModelTabeleEvidencijeRadionice;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,28 +19,55 @@ import java.util.List;
  */
 public class PrikazEvidencijeRadioniceController {
     private final PrikazEvidencijeRadioniceForma pef;
-    
+
+    Instruktor ulogovani = cordinator.Cordinator.getInstance().getUlogovani();
+
     public PrikazEvidencijeRadioniceController(PrikazEvidencijeRadioniceForma pef) {
         this.pef = pef;
         addActionListeners();
+
     }
 
-    private void addActionListeners() {
-    }
-    
-    
-    
-        public void otvoriFormu() {
+    public void otvoriFormu() {
         pripremiFormu();
-        //pef.setVisible(true);
-        
+        pef.setVisible(true);
     }
-
 
     public void pripremiFormu() {
         List<EvidencijaRadionice> evidencijeRadionica = komunikacija.Komunikacija.getInstance().ucitajEvidencijeRadionica();
-        ModelTabeleEvidencijaRadionice mtr = new ModelTabeleEvidencijaRadionice(evidencijeRadionica);
-        pef.getjTableEvidencijaRadionice().setModel(mtr);
+        ModelTabeleEvidencijeRadionice mte = new ModelTabeleEvidencijeRadionice(evidencijeRadionica);
+        pef.getjTableEvidencijaRadionice().setModel(mte);
+    }
+
+    public void osveziFormu() {
+        pripremiFormu();
+    }
+
+    private void addActionListeners() {
+        
+        pef.addBtnPretraziActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String ime = pef.getjTextFieldIme().getText().trim();
+                String prezime = pef.getjTextFieldPrezime().getText().trim();
+                
+                ModelTabeleEvidencijeRadionice mte = (ModelTabeleEvidencijeRadionice) pef.getjTableEvidencijaRadionice().getModel();
+                mte.pretrazi(ime,prezime);
+                
+            }
+        });
+        
+        
+        pef.addBtnResetujActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pripremiFormu();
+                
+            }
+            
+        });
+
     }
     
     

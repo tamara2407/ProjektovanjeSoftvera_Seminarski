@@ -79,11 +79,11 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(null);
                         break;
                         
-//                    case UCITAJ_EVIDENCIJE_RADIONICA:
-//                        List<EvidencijaRadionice> evidencijeRadionica = controller.Controller.getInstance().ucitajEvidencijeRadionica();  
-//                        System.out.println("KLASA OKZ: "+evidencijeRadionica);
-//                        odgovor.setOdgovor(evidencijeRadionica);
-//                        break;
+                    case UCITAJ_EVIDENCIJE_RADIONICA:
+                        List<EvidencijaRadionice> evidencijeRadionica = controller.Controller.getInstance().ucitajEvidencijeRadionica();  
+                        System.out.println("KLASA OKZ: "+evidencijeRadionica);
+                        odgovor.setOdgovor(evidencijeRadionica);
+                        break;
                         
 
                         

@@ -4,6 +4,7 @@
  */
 package forme;
 
+import domen.Tezina;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,6 +21,9 @@ public class DodajFiguruForma extends javax.swing.JFrame {
      */
     public DodajFiguruForma() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     /**
@@ -55,8 +59,6 @@ public class DodajFiguruForma extends javax.swing.JFrame {
         jLabel2.setText("Tezina:");
 
         jLabel3.setText("Cena:");
-
-        jComboBoxTezina.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,6 +161,7 @@ public class DodajFiguruForma extends javax.swing.JFrame {
     public void setjComboBoxTezina(JComboBox<String> jComboBoxTezina) {
         this.jComboBoxTezina = jComboBoxTezina;
     }
+
 
     public JTextField getjTextFieldCena() {
         return jTextFieldCena;

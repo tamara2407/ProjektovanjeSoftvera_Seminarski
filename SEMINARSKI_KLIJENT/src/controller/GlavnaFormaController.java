@@ -26,7 +26,7 @@ public class GlavnaFormaController {
 
     public void otvoriFormu() {
         Instruktor ulogovani = cordinator.Cordinator.getInstance().getUlogovani();
-        String imePrezime = ulogovani.getIme()+" "+ulogovani.getPrezime()+"!";
+        String imePrezime = ulogovani.getIme()+" "+ulogovani.getPrezime();
         gf.setVisible(true);
         gf.getjLabelUlogovani().setText(imePrezime);
     }

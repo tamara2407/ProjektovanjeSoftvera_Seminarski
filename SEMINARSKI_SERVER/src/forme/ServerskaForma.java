@@ -22,6 +22,8 @@ public class ServerskaForma extends javax.swing.JFrame {
      */
     public ServerskaForma() {
         initComponents();
+        //this.setExtendedState(ServerskaForma.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
         server = new Server();
         jLabelSTATUS.setText("");
         jButtonZAUSTAVI.setEnabled(false);

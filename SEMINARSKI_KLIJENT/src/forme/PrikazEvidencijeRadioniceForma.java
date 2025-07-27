@@ -4,7 +4,9 @@
  */
 package forme;
 
+import java.awt.event.ActionListener;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,6 +19,9 @@ public class PrikazEvidencijeRadioniceForma extends javax.swing.JFrame {
      */
     public PrikazEvidencijeRadioniceForma() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     /**
@@ -141,12 +146,37 @@ public class PrikazEvidencijeRadioniceForma extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPrezime;
     // End of variables declaration//GEN-END:variables
 
+        public void addBtnPretraziActionListener(ActionListener actionListener) {
+        jButtonPretrazi.addActionListener(actionListener);
+    }
+    
+    public void addBtnResetujActionListener(ActionListener actionListener) {
+        jButtonResetuj.addActionListener(actionListener);
+    }
+    
+    
     public JTable getjTableEvidencijaRadionice() {
         return jTableEvidencijaRadionice;
     }
 
     public void setjTableEvidencijaRadionice(JTable jTableEvidencijaRadionice) {
         this.jTableEvidencijaRadionice = jTableEvidencijaRadionice;
+    }
+
+    public JTextField getjTextFieldIme() {
+        return jTextFieldIme;
+    }
+
+    public void setjTextFieldIme(JTextField jTextFieldIme) {
+        this.jTextFieldIme = jTextFieldIme;
+    }
+
+    public JTextField getjTextFieldPrezime() {
+        return jTextFieldPrezime;
+    }
+
+    public void setjTextFieldPrezime(JTextField jTextFieldPrezime) {
+        this.jTextFieldPrezime = jTextFieldPrezime;
     }
 
 

@@ -19,6 +19,9 @@ public class DodajKategorijuForma extends javax.swing.JFrame {
      */
     public DodajKategorijuForma() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     /**

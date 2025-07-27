@@ -18,6 +18,8 @@ public class FormaKonfiguracijaPort extends javax.swing.JDialog {
     public FormaKonfiguracijaPort(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**

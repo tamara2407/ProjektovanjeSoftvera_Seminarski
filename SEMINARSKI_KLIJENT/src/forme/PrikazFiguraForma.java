@@ -19,6 +19,9 @@ public class PrikazFiguraForma extends javax.swing.JFrame {
      */
     public PrikazFiguraForma() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     /**

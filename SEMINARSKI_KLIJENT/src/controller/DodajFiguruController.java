@@ -87,6 +87,10 @@ public class DodajFiguruController {
         });
         
     }
+    
+    
+    
+    
 
      private void pripremiFormu(FormaMod mod) {
          

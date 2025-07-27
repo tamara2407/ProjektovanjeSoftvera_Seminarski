@@ -21,6 +21,9 @@ public class DodajPolaznikaForma extends javax.swing.JFrame {
      */
     public DodajPolaznikaForma() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     /**

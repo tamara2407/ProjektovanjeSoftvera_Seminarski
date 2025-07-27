@@ -5,6 +5,7 @@
 package domen;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,19 +16,28 @@ import java.util.List;
 public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
     
     private int rb;
-    private double cena;
+    private EvidencijaRadionice evidencijaRadionice;
     private int brojCasova;
-    private Figura figura; 
+    private Figura figura;
+    private double cenaFigure;
+    private double cenaStavke;
+    
+    
 
     public StavkaEvidencijeRadionice() {
     }
 
-    public StavkaEvidencijeRadionice(int rb, double cena, int brojCasova, Figura figura) {
+    public StavkaEvidencijeRadionice(int rb, EvidencijaRadionice evidencijaRadionice, int brojCasova, Figura figura, double cenaFigure, double cenaStavke) {
         this.rb = rb;
-        this.cena = cena;
+        this.evidencijaRadionice = evidencijaRadionice;
         this.brojCasova = brojCasova;
         this.figura = figura;
+        this.cenaFigure = cenaFigure;
+        this.cenaStavke = cenaStavke;
     }
+
+
+    
 
     public int getRb() {
         return rb;
@@ -37,13 +47,31 @@ public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
         this.rb = rb;
     }
 
-    public double getCena() {
-        return cena;
+    public EvidencijaRadionice getEvidencijaRadionice() {
+        return evidencijaRadionice;
     }
 
-    public void setCena(double cena) {
-        this.cena = cena;
+    public void setEvidencijaRadionice(EvidencijaRadionice evidencijaRadionice) {
+        this.evidencijaRadionice = evidencijaRadionice;
     }
+
+    public double getCenaFigure() {
+        return cenaFigure;
+    }
+
+    public void setCenaFigure(double cenaFigure) {
+        this.cenaFigure = cenaFigure;
+    }
+
+    public double getCenaStavke() {
+        return cenaStavke;
+    }
+
+    public void setCenaStavke(double cenaStavke) {
+        this.cenaStavke = cenaStavke;
+    }
+
+
 
     public int getBrojCasova() {
         return brojCasova;
@@ -63,11 +91,8 @@ public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
 
     @Override
     public String toString() {
-        return "StavkaEvidencijeRadionice{" + "rb=" + rb + ", cena=" + cena + ", brojCasova=" + brojCasova + ", figura=" + figura + '}';
+        return "StavkaEvidencijeRadionice{" + "rb=" + rb + ", evidencijaRadionice=" + evidencijaRadionice + ", brojCasova=" + brojCasova + ", figura=" + figura + ", cenaFigure=" + cenaFigure + ", cenaStavke=" + cenaStavke + '}';
     }
-    
-    
-    
 
     @Override
     public int hashCode() {
@@ -90,6 +115,8 @@ public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
         return this.rb == other.rb;
     }
 
+    
+
     @Override
     public String vratiNazivTabele() {
         return "stavkaevidencijeradionice";
@@ -97,23 +124,29 @@ public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
 
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
+        while (rs.next()) {
+            Figura f = new Figura(rs.getInt("figuraID"), rs.getString("naziv"), rs.getString("tezina"), rs.getDouble("cena"));
+            StavkaEvidencijeRadionice stavkaEvidencijeRadionice = new StavkaEvidencijeRadionice(rs.getInt("rb"), evidencijaRadionice,rs.getInt("brojCasova"),  f, rs.getDouble("cenaFigure"), rs.getDouble("cenaStavke"));
+            lista.add(stavkaEvidencijeRadionice);
+        }
+
+        return lista;
     }
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        return "rb,evidencijaRadioniceID,brojCasova,figura,cena";     }
+        return "rb,evidencijaRadioniceID,brojCasova,figura,cenaFigure,cenaStavke";     }
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        //return rb+","+EvidencijaRadioniceID+","+brojCasova+","+figura.getFiguraID()+","+cena;   
-        return "";
+        return evidencijaRadionice.getEvidencijaRadioniceID()+ "," + cenaFigure + ","
+                + cenaStavke + "," + brojCasova + "," + figura.getFiguraID(); 
     }
 
     @Override
     public String vratiPrimarniKljuc() {
-        //return "stavkaevidencijeradionice.rb="+rb+" AND "+"stavkaevidencijeradionice.evidencijaRadioniceID="+;
-        return "";
+        return "stavkanaevidencijeradionice.rb=" + rb + " AND stavkanaevidencijeradionice.evidencijaRadioniceID=" + evidencijaRadionice.getEvidencijaRadioniceID();
     }
 
     @Override
@@ -123,8 +156,8 @@ public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        //return "rb="+rb+",evidencijaRadioniceID="+evidencijaRadioniceID+",brojCasova="+brojCasova+",figura="+figura.getFiguraID()+"cena="+cena;
-        return "";
+    return "evidencijaRadioniceID=" + evidencijaRadionice.getEvidencijaRadioniceID()+ ",cenaFigure=" + cenaFigure + ",cenaStavke=" + cenaStavke + ",brojCasova=" + brojCasova
+                + ",figura=" + figura.getFiguraID();
     }
     
     

@@ -20,6 +20,9 @@ public class DodajInstruktoraForma extends javax.swing.JFrame {
      */
     public DodajInstruktoraForma() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     /**

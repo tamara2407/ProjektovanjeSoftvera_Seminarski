@@ -20,6 +20,8 @@ public class LoginForma extends javax.swing.JFrame {
      */
     public LoginForma() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
@@ -43,14 +45,14 @@ public class LoginForma extends javax.swing.JFrame {
 
         jLabel2.setText("password:");
 
-        jTextFieldUsername.setText("mare");
+        jTextFieldUsername.setText("tasa");
         jTextFieldUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsernameActionPerformed(evt);
             }
         });
 
-        jPasswordFieldPassword.setText("mare");
+        jPasswordFieldPassword.setText("tasa");
 
         jButtonUlogujSe.setText("Uloguj se");
         jButtonUlogujSe.addActionListener(new java.awt.event.ActionListener() {

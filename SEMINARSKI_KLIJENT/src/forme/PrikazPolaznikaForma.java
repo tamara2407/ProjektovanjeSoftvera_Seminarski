@@ -20,6 +20,9 @@ public class PrikazPolaznikaForma extends javax.swing.JFrame {
      */
     public PrikazPolaznikaForma() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
     }
 
     /**
