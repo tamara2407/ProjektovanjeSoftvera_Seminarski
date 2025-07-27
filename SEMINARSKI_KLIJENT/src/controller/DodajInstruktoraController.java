@@ -88,7 +88,7 @@ public class DodajInstruktoraController {
         
     }
 
-    private void pripremiFormu(FormaMod mod) {
+     private void pripremiFormu(FormaMod mod) {
         switch (mod) {
             case DODAJ:
                 dif.getjTextFieldID().setEnabled(false);

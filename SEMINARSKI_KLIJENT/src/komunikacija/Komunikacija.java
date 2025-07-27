@@ -4,7 +4,11 @@
  */
 package komunikacija;
 
+import domen.EvidencijaRadionice;
+import domen.Figura;
 import domen.Instruktor;
+import domen.Kategorija;
+import domen.Polaznik;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -73,9 +77,9 @@ public class Komunikacija {
         
         Odgovor odg = (Odgovor) primalac.primi();
         if(odg.getOdgovor()==null){
-            System.out.println("uspeh");
+            System.out.println("USPESNO");
         }else{
-            System.out.println("greska");
+            System.out.println("GRESKA");
             ((Exception)odg.getOdgovor()).printStackTrace();
             throw new Exception("GRESKA");
         }
@@ -100,10 +104,129 @@ public class Komunikacija {
         Odgovor odgovor = (Odgovor) primalac.primi();
         if(odgovor.getOdgovor()==null){
             System.out.println("USPEH");
-            cordinator.Cordinator.getInstance().osveziFormu();
+            cordinator.Cordinator.getInstance().osveziFormuInstruktor();
         }else{
             System.out.println("GRESKA");
         }
     }
+
+    public List<EvidencijaRadionice> ucitajEvidencijeRadionica() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_EVIDENCIJE_RADIONICA,null);
+        List<EvidencijaRadionice> evidencijeRadionica = new ArrayList<>();
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        evidencijeRadionica = (List<EvidencijaRadionice>) odg.getOdgovor();
+        return evidencijeRadionica;
+        
+    }
+
+//    public void dodajPolaznika(Polaznik p) {
+//        Zahtev zahtev = new Zahtev(Operacija.DODAJ_POLAZNIKA, p);
+//        posiljalac.posalji(zahtev);
+//        Odgovor odgovor = (Odgovor) primalac.primi();
+//        if(odgovor.getOdgovor()==null){
+//            System.out.println("USPEH");
+//        }else{
+//            System.out.println("GRESKA");
+//        }
+//    }
+//
+//    public void azurirajPolaznika(Polaznik p) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+
+    public void dodajFiguru(Figura f) {
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_FIGURU, f);
+        posiljalac.posalji(zahtev);
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if(odgovor.getOdgovor()==null){
+            System.out.println("USPEH");
+        }else{
+            System.out.println("GRESKA");
+        }
+    }
+
+    public void obrisiFiguru(Figura f) throws Exception {
+        Zahtev zahtev = new Zahtev(Operacija.OBRISI_FIGURU,f);
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odg = (Odgovor) primalac.primi();
+        if(odg.getOdgovor()==null){
+            System.out.println("USPESNO");
+        }else{
+            System.out.println("GRESKA");
+            ((Exception)odg.getOdgovor()).printStackTrace();
+            throw new Exception("GRESKA");
+        }
+    }
+
+    public List<Figura> ucitajFigure() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_FIGURE,null);
+        List<Figura> figure = new ArrayList<>();
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        figure = (List<Figura>) odg.getOdgovor();
+        return figure;
+    }
+
+    public void azurirajFiguru(Figura f) {
+        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_FIGURU, f);
+        posiljalac.posalji(zahtev);
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if(odgovor.getOdgovor()==null){
+            System.out.println("USPEH");
+            cordinator.Cordinator.getInstance().osveziFormuFigura();
+        }else{
+            System.out.println("GRESKA: " + odgovor.getOdgovor().toString());
+            System.out.println("GRESKA");
+        }
+    }
+
+    public List<Kategorija> ucitajKategorije() {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_KATEGORIJE,null);
+        List<Kategorija> kategorije = new ArrayList<>();
+        posiljalac.posalji(zahtev);
+        Odgovor odg = (Odgovor) primalac.primi();
+        kategorije = (List<Kategorija>) odg.getOdgovor();
+        return kategorije;
+    }
+
+    public void obrisiKategoriju(Kategorija k) throws Exception {
+        
+        Zahtev zahtev = new Zahtev(Operacija.OBRISI_KATEGORIJU,k);
+        posiljalac.posalji(zahtev);
+        
+        Odgovor odg = (Odgovor) primalac.primi();
+        if(odg.getOdgovor()==null){
+            System.out.println("USPESNO");
+        }else{
+            System.out.println("GRESKA");
+            ((Exception)odg.getOdgovor()).printStackTrace();
+            throw new Exception("GRESKA");
+        }
+    }
+
+    public void dodajKategoriju(Kategorija k) {
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_KATEGORIJU, k);
+        posiljalac.posalji(zahtev);
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if(odgovor.getOdgovor()==null){
+            System.out.println("USPEH");
+        }else{
+            System.out.println("GRESKA");
+        }    }
+
+    public void azurirajKategoriju(Kategorija k) {
+        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_KATEGORIJU, k);
+        posiljalac.posalji(zahtev);
+        Odgovor odgovor = (Odgovor) primalac.primi();
+        if(odgovor.getOdgovor()==null){
+            System.out.println("USPEH");
+            cordinator.Cordinator.getInstance().osveziFormuKategorija();
+        }else{
+            System.out.println("GRESKA");
+        }
+    }
+
     
 }

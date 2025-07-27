@@ -162,7 +162,7 @@ public class PrikazInstruktoraForma extends javax.swing.JFrame {
         jButtonPretrazi.addActionListener(actionListener);
     }
     
-        public void addBtnResetujActionListener(ActionListener actionListener) {
+    public void addBtnResetujActionListener(ActionListener actionListener) {
         jButtonResetuj.addActionListener(actionListener);
     }
 

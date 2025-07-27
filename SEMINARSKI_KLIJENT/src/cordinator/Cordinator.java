@@ -4,16 +4,28 @@
  */
 package cordinator;
 
+import controller.DodajFiguruController;
 import controller.DodajInstruktoraController;
+import controller.DodajKategorijuController;
+//import controller.DodajPolaznikaController;
 import controller.GlavnaFormaController;
 import controller.LoginController;
+import controller.PrikazEvidencijeRadioniceController;
+import controller.PrikazFiguraController;
 import controller.PrikazInstruktoraController;
+import controller.PrikazKategorijeController;
 import domen.Instruktor;
+import forme.DodajFiguruForma;
 import forme.DodajInstruktoraForma;
+import forme.DodajKategorijuForma;
+import forme.DodajPolaznikaForma;
 import forme.FormaMod;
 import forme.GlavnaForma;
 import forme.LoginForma;
+import forme.PrikazEvidencijeRadioniceForma;
+import forme.PrikazFiguraForma;
 import forme.PrikazInstruktoraForma;
+import forme.PrikazKategorijeForma;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +43,15 @@ public class Cordinator {
     private GlavnaFormaController glavnaFormaController;
     private PrikazInstruktoraController prikazInstruktoraController;
     private DodajInstruktoraController dodajInstruktoraController;
+    private PrikazEvidencijeRadioniceController prikazEvidencijeRadioniceController;
+//    private DodajPolaznikaController dodajPolaznikaController;
+    private DodajFiguruController dodajFiguruController;
+    private PrikazFiguraController prikazFiguraController;
+    private PrikazKategorijeController prikazKategorijeController;
+    private DodajKategorijuController dodajKategorijuController;
+    
+    
+    
     private Map<String, Object> parametri;
     
     
@@ -57,15 +78,8 @@ public class Cordinator {
         glavnaFormaController = new GlavnaFormaController(new GlavnaForma());
         glavnaFormaController.otvoriFormu();    }
 
-    public Instruktor getUlogovani() {
-        return ulogovani;
-    }
-
-    public void setUlogovani(Instruktor ulogovani) {
-        this.ulogovani = ulogovani;
-    }
-
-    public void otvoriPrikazInstruktoraForma() {
+    
+    public void otvoriPrikazInstruktoraFormu() {
         prikazInstruktoraController = new PrikazInstruktoraController(new PrikazInstruktoraForma());
         prikazInstruktoraController.otvoriFormu(); 
     }
@@ -75,8 +89,54 @@ public class Cordinator {
         dodajInstruktoraController.otvoriFormu(FormaMod.DODAJ);
     }   
 
+    public void otvoriIzmeniInstruktoraFormu() {
+        dodajInstruktoraController = new DodajInstruktoraController(new DodajInstruktoraForma());
+        dodajInstruktoraController.otvoriFormu(FormaMod.IZMENI);
+    }
     
-   public void dodajParam(String s, Object o){
+    public void otvoriPrikazEvidencijeRadionicaFormu() {
+        prikazEvidencijeRadioniceController = new PrikazEvidencijeRadioniceController(new PrikazEvidencijeRadioniceForma());
+        prikazEvidencijeRadioniceController.otvoriFormu(); 
+    }
+   
+//        public void otvoriDodajPolaznikaFormu() {
+//        dodajPolaznikaController = new DodajPolaznikaController(new DodajPolaznikaForma());
+//        dodajPolaznikaController.otvoriFormu(FormaMod.DODAJ);    
+//        }
+    
+    
+    public void otvoriDodajFiguruFormu() {
+        dodajFiguruController = new DodajFiguruController(new DodajFiguruForma());
+        dodajFiguruController.otvoriFormu(FormaMod.DODAJ);
+    }  
+    
+    public void otvoriPrikazFiguraFormu() {
+        prikazFiguraController = new PrikazFiguraController(new PrikazFiguraForma());
+        prikazFiguraController.otvoriFormu();
+    }
+    
+    public void otvoriIzmeniFiguruFormu() {
+        dodajFiguruController = new DodajFiguruController(new DodajFiguruForma());
+        dodajFiguruController.otvoriFormu(FormaMod.IZMENI);
+    }
+    
+        public void otvoriPrikazKategorijaFormu() {
+        prikazKategorijeController = new PrikazKategorijeController(new PrikazKategorijeForma());
+        prikazKategorijeController.otvoriFormu();
+    }
+
+        public void otvoriDodajKategorijeFormu() {
+        dodajKategorijuController = new DodajKategorijuController(new DodajKategorijuForma());
+        dodajKategorijuController.otvoriFormu(FormaMod.DODAJ);    }
+        
+        
+    public void otvoriIzmeniKategorijuFormu() {
+        dodajKategorijuController = new DodajKategorijuController(new DodajKategorijuForma());
+        dodajKategorijuController.otvoriFormu(FormaMod.IZMENI);
+    }
+    
+    
+    public void dodajParam(String s, Object o){
        parametri.put(s, o);
    }
    
@@ -84,14 +144,45 @@ public class Cordinator {
        return parametri.get(s);
    }
 
-    public void otvoriIzmeniInstruktoraForma() {
-        dodajInstruktoraController = new DodajInstruktoraController(new DodajInstruktoraForma());
-        dodajInstruktoraController.otvoriFormu(FormaMod.IZMENI);
-    }
-
-    public void osveziFormu() {
+    public void osveziFormuInstruktor() {
         prikazInstruktoraController.osveziFormu();
     }
+    
+    public void osveziFormuFigura() {
+        prikazFiguraController.osveziFormu();    
+    }
+    
+    public void osveziFormuKategorija() {
+        prikazKategorijeController.osveziFormu();    
+    }
+    
+    
+    public Instruktor getUlogovani() {
+        return ulogovani;
+    }
+
+    public void setUlogovani(Instruktor ulogovani) {
+        this.ulogovani = ulogovani;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 }

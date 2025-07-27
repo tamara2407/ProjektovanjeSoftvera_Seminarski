@@ -16,7 +16,7 @@ public class AzurirajInstruktoraSO extends ApstraktnaGenerickaOperacija {
     @Override
     protected void preduslovi(Object param) throws Exception {
         if(param==null || !(param instanceof Instruktor)){
-        throw new Exception("Sistem ne može da doda instruktora");
+        throw new Exception("Sistem ne može da izmeni instruktora");
         }
         Instruktor i = (Instruktor) param;
         if(i.getIme()==null || i.getIme().isEmpty()){

@@ -4,7 +4,11 @@
  */
 package niti;
 
+import domen.EvidencijaRadionice;
+import domen.Figura;
 import domen.Instruktor;
+import domen.Kategorija;
+import domen.Polaznik;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
@@ -41,6 +45,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                 Zahtev zahtev = (Zahtev) primalac.primi();
                 Odgovor odgovor = new Odgovor();
                 switch(zahtev.getOperacija()){
+                    
                     case LOGIN:
                         Instruktor i = (Instruktor) zahtev.getParametar();
                         i= controller.Controller.getInstance().login(i);
@@ -71,6 +76,72 @@ public class ObradaKlijentskihZahteva extends Thread {
                     case AZURIRAJ_INSTRUKTORA:
                         Instruktor Ainstruktor = (Instruktor) zahtev.getParametar();
                         controller.Controller.getInstance().azurirajInstruktora(Ainstruktor);
+                        odgovor.setOdgovor(null);
+                        break;
+                        
+//                    case UCITAJ_EVIDENCIJE_RADIONICA:
+//                        List<EvidencijaRadionice> evidencijeRadionica = controller.Controller.getInstance().ucitajEvidencijeRadionica();  
+//                        System.out.println("KLASA OKZ: "+evidencijeRadionica);
+//                        odgovor.setOdgovor(evidencijeRadionica);
+//                        break;
+                        
+                    case DODAJ_POLAZNIKA:
+                        Polaznik polaznik = (Polaznik) zahtev.getParametar();
+                        controller.Controller.getInstance().dodajPolaznika(polaznik);
+                        odgovor.setOdgovor(null);
+                        break;
+                        
+                    case DODAJ_FIGURU:
+                        Figura figura = (Figura) zahtev.getParametar();
+                        controller.Controller.getInstance().dodajFiguru(figura);
+                        odgovor.setOdgovor(null);
+                        break;
+                        
+                    case OBRISI_FIGURU:
+                        try{
+                        Figura Ofigura = (Figura) zahtev.getParametar();
+                        controller.Controller.getInstance().obrisiFiguru(Ofigura);
+                        odgovor.setOdgovor(null);
+                        }catch(Exception e){
+                           odgovor.setOdgovor(e);
+                        }
+                        break;
+                        
+                    case UCITAJ_FIGURE:
+                        List<Figura> figure = controller.Controller.getInstance().ucitajFigure();  
+                        odgovor.setOdgovor(figure);
+                        break;
+                        
+                    case AZURIRAJ_FIGURU:
+                        Figura aFigura = (Figura) zahtev.getParametar();
+                        controller.Controller.getInstance().azurirajFiguru(aFigura);
+                        odgovor.setOdgovor(null);
+                        break;
+                        
+                    case UCITAJ_KATEGORIJE:
+                        List<Kategorija> kategorije = controller.Controller.getInstance().ucitajKategorije();  
+                        odgovor.setOdgovor(kategorije);
+                        break;
+                        
+                    case OBRISI_KATEGORIJU:
+                        try{
+                        Kategorija kategorija = (Kategorija) zahtev.getParametar();
+                        controller.Controller.getInstance().obrisiKategoriju(kategorija);
+                        odgovor.setOdgovor(null);
+                        }catch(Exception e){
+                           odgovor.setOdgovor(e);
+                        }
+                        break;
+                        
+                    case DODAJ_KATEGORIJU:
+                        Kategorija k = (Kategorija) zahtev.getParametar();
+                        controller.Controller.getInstance().dodajKategorija(k);
+                        odgovor.setOdgovor(null);
+                        break;
+                        
+                    case AZURIRAJ_KATEGORIJU:
+                        Kategorija Akategorija = (Kategorija) zahtev.getParametar();
+                        controller.Controller.getInstance().azurirajKategoriju(Akategorija);
                         odgovor.setOdgovor(null);
                         break;
                         

@@ -44,8 +44,7 @@ public class PrikazInstruktoraController {
                         JOptionPane.showMessageDialog(pif, "Sistem ne moze da obrise instruktora" , "GRESKA", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-                
-                
+     
             }
         });
         
@@ -60,7 +59,7 @@ public class PrikazInstruktoraController {
                     ModelTabeleInstruktor mti = (ModelTabeleInstruktor) pif.getjTableInstruktori().getModel();
                     Instruktor i = mti.getLista().get(red);
                     cordinator.Cordinator.getInstance().dodajParam("instruktor", i);
-                    cordinator.Cordinator.getInstance().otvoriIzmeniInstruktoraForma();
+                    cordinator.Cordinator.getInstance().otvoriIzmeniInstruktoraFormu();
                             
                     
                 }
@@ -99,6 +98,10 @@ public class PrikazInstruktoraController {
         pif.setVisible(true);
         
     }
+    
+    public void osveziFormu() {
+        pripremiFormu();
+    }
 
     public void pripremiFormu() {
         List<Instruktor> instruktori = komunikacija.Komunikacija.getInstance().ucitajInstruktore();
@@ -106,8 +109,6 @@ public class PrikazInstruktoraController {
         pif.getjTableInstruktori().setModel(mti);
     }
 
-    public void osveziFormu() {
-        pripremiFormu();
-    }
+    
     
 }
