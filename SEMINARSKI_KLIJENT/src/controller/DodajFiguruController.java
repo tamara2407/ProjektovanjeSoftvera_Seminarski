@@ -87,10 +87,7 @@ public class DodajFiguruController {
         });
         
     }
-    
-    
-    
-    
+
 
      private void pripremiFormu(FormaMod mod) {
          
@@ -106,6 +103,8 @@ public class DodajFiguruController {
                 dff.getjButtonAzuriraj().setVisible(false);
                 dff.getjButtonDodaj().setVisible(true);
                 dff.getjButtonDodaj().setEnabled(true);
+                dff.getjLabelID().setVisible(false);
+                dff.getjTextFieldID().setVisible(false);
                 break;
             case IZMENI:
                 dff.getjButtonDodaj().setVisible(false);

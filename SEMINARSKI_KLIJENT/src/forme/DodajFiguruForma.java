@@ -4,10 +4,10 @@
  */
 package forme;
 
-import domen.Tezina;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -79,10 +79,10 @@ public class DodajFiguruForma extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldNaziv)
                     .addComponent(jTextFieldCena)
-                    .addComponent(jComboBoxTezina, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxTezina, 0, 183, Short.MAX_VALUE)
+                    .addComponent(jTextFieldID))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -187,6 +187,14 @@ public class DodajFiguruForma extends javax.swing.JFrame {
         this.jTextFieldNaziv = jTextFieldNaziv;
     }
 
+    public JLabel getjLabelID() {
+        return jLabel6;
+    }
 
+    public void setjLabelID(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    
 
 }

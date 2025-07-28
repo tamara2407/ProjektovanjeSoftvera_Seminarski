@@ -31,8 +31,8 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTextFieldID" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldNaziv" alignment="0" pref="196" max="32767" attributes="0"/>
+                  <Component id="jTextFieldNaziv" pref="196" max="32767" attributes="0"/>
+                  <Component id="jTextFieldID" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="236" max="-2" attributes="0"/>
           </Group>

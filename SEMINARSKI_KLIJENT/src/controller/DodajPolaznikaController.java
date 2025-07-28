@@ -114,6 +114,8 @@ public class DodajPolaznikaController {
                 dpf.getjButtonAzuriraj().setVisible(false);
                 dpf.getjButtonDodaj().setVisible(true);
                 dpf.getjButtonDodaj().setEnabled(true);
+                dpf.getjLabelID().setVisible(false);
+                dpf.getjTextFieldID().setVisible(false);
                 dpf.getjComboBoxKategorija().removeAll();
                 komunikacija.Komunikacija.getInstance().ucitajKategorije();
                 

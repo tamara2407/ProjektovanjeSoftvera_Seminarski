@@ -22,7 +22,7 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
         String upit = "SELECT * FROM " + param.vratiNazivTabele();
         if(uslov!=null){
-            upit+=uslov; //treba dodati
+            upit+=uslov; 
         }
         
         System.out.println(upit);

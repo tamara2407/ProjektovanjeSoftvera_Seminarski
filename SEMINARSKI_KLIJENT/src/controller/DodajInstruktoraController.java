@@ -95,6 +95,8 @@ public class DodajInstruktoraController {
                 dif.getjButtonAzuriraj().setVisible(false);
                 dif.getjButtonDodaj().setVisible(true);
                 dif.getjButtonDodaj().setEnabled(true);
+                dif.getjLabelID().setVisible(false);
+                dif.getjTextFieldID().setVisible(false);
                 break;
             case IZMENI:
                 dif.getjButtonDodaj().setVisible(false);

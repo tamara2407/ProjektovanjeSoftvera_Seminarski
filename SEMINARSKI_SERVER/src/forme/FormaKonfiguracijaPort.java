@@ -82,17 +82,17 @@ public class FormaKonfiguracijaPort extends javax.swing.JDialog {
             port = Integer.parseInt(jTextFieldPort.getText());
         }catch(NumberFormatException ex){
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "GRESKA, PORT MORA DA BUDE BROJ","GRESKA",  JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "GRESKA, Port mora da bude broj!","GRESKA",  JOptionPane.ERROR_MESSAGE);
             return;
         }
         
         if(port>=0 && port<=65535){
             konfiguracija.Konfiguracija.getInstance().setProperty("port", port+"");
             konfiguracija.Konfiguracija.getInstance().sacuvajIzmene();
-            JOptionPane.showMessageDialog(this, "PORT JE SACUVAN ","USPESNO",  JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Port je sacuvan! ","USPESNO",  JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }else{
-            JOptionPane.showMessageDialog(this, "GRESKA, PORT NIJE U DOBROM OPSEGU","GRESKA",  JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "GRESKA, Port nije u dobrom opsegu!","GRESKA",  JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jButtonSacuvajActionPerformed

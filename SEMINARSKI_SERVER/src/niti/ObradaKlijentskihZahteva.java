@@ -85,8 +85,6 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(evidencijeRadionica);
                         break;
                         
-
-                        
                     case DODAJ_FIGURU:
                         Figura figura = (Figura) zahtev.getParametar();
                         controller.Controller.getInstance().dodajFiguru(figura);

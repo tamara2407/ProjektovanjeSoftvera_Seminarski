@@ -23,6 +23,8 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
         }
     }
 
+    
+    //true false, ne proveravaj sve
     @Override
     protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
         List<Instruktor> sviInstruktori = broker.getAll((Instruktor) param,null);

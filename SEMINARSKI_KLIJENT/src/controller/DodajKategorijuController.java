@@ -87,6 +87,8 @@ public class DodajKategorijuController {
                 dkf.getjButtonAzuriraj().setVisible(false);
                 dkf.getjButtonDodaj().setVisible(true);
                 dkf.getjButtonDodaj().setEnabled(true);
+                dkf.getjLabelID().setVisible(false);
+                dkf.getjTextFieldID().setVisible(false);
                 break;
             case IZMENI:
                 dkf.getjButtonDodaj().setVisible(false);

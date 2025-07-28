@@ -6,6 +6,7 @@ package forme;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -95,12 +96,11 @@ public class DodajInstruktoraForma extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldPrezime, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                                .addComponent(jTextFieldIme)
-                                .addComponent(jTextFieldEmail)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldPrezime, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                            .addComponent(jTextFieldIme)
+                            .addComponent(jTextFieldEmail)
+                            .addComponent(jTextFieldID))))
                 .addContainerGap(130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -212,6 +212,15 @@ public class DodajInstruktoraForma extends javax.swing.JFrame {
 
     public void setjTextFieldID(JTextField jTextFieldID) {
         this.jTextFieldID = jTextFieldID;
+    }
+    
+    
+    public JLabel getjLabelID() {
+        return jLabel6;
+    }
+
+    public void setjLabelID(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
     }
     
     

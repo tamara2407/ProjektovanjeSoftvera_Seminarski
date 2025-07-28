@@ -21,11 +21,11 @@ public class Server extends Thread{
     
     boolean kraj = false;
     ServerSocket serverSoket;
-    //ovo
+    
     List<ObradaKlijentskihZahteva> klijenti;
 
     public Server() {
-        //ovo
+        
         klijenti = new ArrayList<>();
     }
 
@@ -39,7 +39,7 @@ public class Server extends Thread{
                 System.out.println("Klijent je povezan");
                 
                 ObradaKlijentskihZahteva okz = new ObradaKlijentskihZahteva(s);
-                //ovo
+                
                 klijenti.add(okz);
                 okz.start();
             }
@@ -52,7 +52,7 @@ public class Server extends Thread{
     public void zaustaviServer(){
         kraj=true;
         try {
-            //ovo
+            
             for(ObradaKlijentskihZahteva k : klijenti){
                 k.prekini();
             }

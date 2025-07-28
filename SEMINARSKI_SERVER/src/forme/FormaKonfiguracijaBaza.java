@@ -117,17 +117,22 @@ public class FormaKonfiguracijaBaza extends javax.swing.JDialog {
         String username = jTextFieldUsername.getText().trim();
         String password = String.valueOf(jPasswordFieldPassword.getPassword()).trim();
         
+        if (url.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "URL ne sme biti prazan!", "NEUSPESNO", JOptionPane.ERROR_MESSAGE);
+            return;  
+        }
+        
         try{
         konfiguracija.Konfiguracija.getInstance().setProperty("URL", url);
         konfiguracija.Konfiguracija.getInstance().setProperty("username", username);
         konfiguracija.Konfiguracija.getInstance().setProperty("password", password);
         
         konfiguracija.Konfiguracija.getInstance().sacuvajIzmene();
-        JOptionPane.showMessageDialog(this, "PARAMETRI SU SACUVANI","USPESNO",  JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Parametri su sačuvani","USPEŠNO",  JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
         }catch(Exception ex){
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "GRESKA, PARAMETRI NISU SACUVANI","GRESKA",  JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "GRESKA, Parametri nisu sacuvani!","GRESKA",  JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_jButtonSacuvajActionPerformed

@@ -22,8 +22,8 @@ public class ServerskaForma extends javax.swing.JFrame {
      */
     public ServerskaForma() {
         initComponents();
-        //this.setExtendedState(ServerskaForma.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
+        this.setExtendedState(ServerskaForma.MAXIMIZED_BOTH);
         server = new Server();
         jLabelSTATUS.setText("");
         jButtonZAUSTAVI.setEnabled(false);
@@ -97,32 +97,34 @@ public class ServerskaForma extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jButtonPOKRENI)
-                        .addGap(65, 65, 65)
-                        .addComponent(jButtonZAUSTAVI))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                        .addGap(24, 24, 24)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelSTATUS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelStatus)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(jLabelSTATUS))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(jLabelStatus))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jButtonPOKRENI)
+                        .addGap(356, 356, 356)
+                        .addComponent(jButtonZAUSTAVI)))
+                .addContainerGap(398, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabelStatus)
                     .addComponent(jLabelSTATUS))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabelStatus)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonPOKRENI)
-                    .addComponent(jButtonZAUSTAVI))
-                .addGap(100, 100, 100))
+                    .addComponent(jButtonPOKRENI, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonZAUSTAVI, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
 
         pack();
