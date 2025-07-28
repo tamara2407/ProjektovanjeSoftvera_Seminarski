@@ -73,5 +73,15 @@ public class ModelTabelePolaznik extends AbstractTableModel{
         fireTableDataChanged();
                
     }
+
+    public void pretrazi(String imePrezime) {
+        List<Polaznik> filteredList = lista.stream()
+                .filter(p -> (imePrezime == null || imePrezime.isEmpty() || p.getIme().toLowerCase().contains(imePrezime.toLowerCase()) || p.getPrezime().toLowerCase().contains(imePrezime.toLowerCase())))
+                .collect(Collectors.toList());
+
+        this.lista = filteredList;
+        fireTableDataChanged();
+    
+    }
     
 }

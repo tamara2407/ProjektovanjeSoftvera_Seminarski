@@ -10,6 +10,7 @@ import domen.Instruktor;
 import domen.Kategorija;
 import domen.Polaznik;
 import java.util.List;
+import operacije.evidencijaRadionice.KreirajEvidencijuRadioniceSO;
 import operacije.evidencijaRadionice.UcitajEvidencijeRadionicaSO;
 import operacije.figura.AzurirajFiguruSO;
 import operacije.figura.KreirajFiguruSO;
@@ -149,6 +150,11 @@ public class Controller {
     public void azurirajPolaznika(Polaznik aPolaznik) throws Exception {
         IzmeniPolaznikaSO operacija = new IzmeniPolaznikaSO();
         operacija.izvrsi(aPolaznik, null);    
+    }
+
+    public void dodajEvidencijuRadionice(EvidencijaRadionice evidencija) throws Exception {
+        KreirajEvidencijuRadioniceSO operacija = new KreirajEvidencijuRadioniceSO();
+        operacija.izvrsi(evidencija, null);
     }
     
 }

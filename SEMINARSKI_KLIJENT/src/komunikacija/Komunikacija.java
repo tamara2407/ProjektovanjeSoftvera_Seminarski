@@ -262,6 +262,18 @@ public class Komunikacija {
         
     }
 
+    public void dodajEvidencijuRadionice(EvidencijaRadionice evidencijaRadionice) {
+        Zahtev zahtev = new Zahtev(Operacija.DODAJ_EVIDENCIJU_RADIONICE, evidencijaRadionice);
+        posiljalac.posalji(zahtev);
+
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("USPEŠNO");
+        } else {
+            System.out.println("GRESKA");
+        }
+    }
+
 
 
     

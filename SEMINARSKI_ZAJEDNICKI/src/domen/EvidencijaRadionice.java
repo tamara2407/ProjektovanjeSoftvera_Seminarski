@@ -20,7 +20,7 @@ public class EvidencijaRadionice implements ApstraktniDomenskiObjekat{
     private Date datum;
     private Instruktor instruktor;
     private Polaznik polaznik;
-    private List<StavkaEvidencijeRadionice> stavke;
+    private List<StavkaEvidencijeRadionice> stavke = new ArrayList<>();
 
     public EvidencijaRadionice() {
     }
@@ -155,7 +155,8 @@ public class EvidencijaRadionice implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        return cena+",'"+datum+"',"+instruktor.getInstruktorID()+","+polaznik.getPolaznikID(); 
+        java.sql.Date sqlDate = new java.sql.Date(datum.getTime());
+        return cena+",'"+sqlDate+"',"+instruktor.getInstruktorID()+","+polaznik.getPolaznikID(); 
     }
 
     @Override

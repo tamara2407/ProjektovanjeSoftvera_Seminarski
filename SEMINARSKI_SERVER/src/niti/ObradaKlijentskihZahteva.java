@@ -215,6 +215,12 @@ public class ObradaKlijentskihZahteva extends Thread {
                         odgovor.setOdgovor(null);
                         break;
                         
+                    case DODAJ_EVIDENCIJU_RADIONICE:
+                        EvidencijaRadionice evidencija = (EvidencijaRadionice) zahtev.getParametar();
+                        controller.Controller.getInstance().dodajEvidencijuRadionice(evidencija);
+                        odgovor.setOdgovor(null);
+                        break;
+                        
                     default: System.out.println("GRESKA, TA OPERACIJA NE POSTOJI");
                     
                 }

@@ -22,7 +22,7 @@ public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
     private double cenaFigure;
     private double cenaStavke;
     
-    
+    private StatusStavke status;
 
     public StavkaEvidencijeRadionice() {
     }
@@ -34,6 +34,8 @@ public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
         this.figura = figura;
         this.cenaFigure = cenaFigure;
         this.cenaStavke = cenaStavke;
+        
+        this.status = StatusStavke.NEIZMENJENA;
     }
 
 
@@ -88,6 +90,18 @@ public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
     public void setFigura(Figura figura) {
         this.figura = figura;
     }
+    
+    
+    public StatusStavke getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusStavke status) {
+        this.status = status;
+    }
+    
+    
+    
 
     @Override
     public String toString() {
@@ -136,12 +150,12 @@ public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiKoloneZaUbacivanje() {
-        return "rb,evidencijaRadioniceID,brojCasova,figura,cenaFigure,cenaStavke";     }
+        return "evidencijaRadioniceID,brojCasova,figura,cenaFigure,cenaStavke";     }
 
     @Override
     public String vratiVrednostiZaUbacivanje() {
-        return evidencijaRadionice.getEvidencijaRadioniceID()+ "," + cenaFigure + ","
-                + cenaStavke + "," + brojCasova + "," + figura.getFiguraID(); 
+        return evidencijaRadionice.getEvidencijaRadioniceID()+ "," + brojCasova + ","
+                + figura.getFiguraID() + "," + cenaFigure + "," + cenaStavke; 
     }
 
     @Override

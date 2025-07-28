@@ -30,5 +30,6 @@ public enum Operacija implements Serializable {
     OBRISI_POLAZNIKA,
     UCITAJ_POLAZNIKE,
     AZURIRAJ_POLAZNIKA,
+    DODAJ_EVIDENCIJU_RADIONICE,
     
 }

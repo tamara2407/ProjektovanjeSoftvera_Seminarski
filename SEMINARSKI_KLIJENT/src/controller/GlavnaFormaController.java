@@ -6,6 +6,8 @@ package controller;
 
 import domen.Instruktor;
 import forme.GlavnaForma;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -21,8 +23,6 @@ public class GlavnaFormaController {
         addActionListeners();
     }
 
-    private void addActionListeners() {
-    }
 
     public void otvoriFormu() {
         Instruktor ulogovani = cordinator.Cordinator.getInstance().getUlogovani();
@@ -31,6 +31,25 @@ public class GlavnaFormaController {
         gf.getjLabelUlogovani().setText(imePrezime);
     }
     
-    
+        private void addActionListeners() {
+        gf.kreirajAddActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cordinator.Cordinator.getInstance().otvoriKreirajEvidencijuRadioniceForma();
+
+            }
+
+        });
+//        gf.izmeniAddActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                 koordinator.Koordinator.getInstance().otvoriIzmeniNarudzbenicuFormu();
+//                
+//
+//            }
+//
+//        });
+
+    }
     
 }

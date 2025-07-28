@@ -8,6 +8,7 @@ import controller.DodajFiguruController;
 import controller.DodajInstruktoraController;
 import controller.DodajKategorijuController;
 import controller.DodajPolaznikaController;
+import controller.DodajStavkuController;
 //import controller.DodajPolaznikaController;
 import controller.GlavnaFormaController;
 import controller.LoginController;
@@ -16,13 +17,16 @@ import controller.PrikazFiguraController;
 import controller.PrikazInstruktoraController;
 import controller.PrikazKategorijeController;
 import controller.PrikazPolaznikaController;
+import controller.KreirajEvidencijuRadioniceController;
 import domen.Instruktor;
 import forme.DodajFiguruForma;
 import forme.DodajInstruktoraForma;
 import forme.DodajKategorijuForma;
 import forme.DodajPolaznikaForma;
+import forme.DodajStavkuForma;
 import forme.FormaMod;
 import forme.GlavnaForma;
+import forme.KreiranjeEvidencijeRadioniceForma;
 import forme.LoginForma;
 import forme.PrikazEvidencijeRadioniceForma;
 import forme.PrikazFiguraForma;
@@ -53,6 +57,8 @@ public class Cordinator {
     private PrikazFiguraController prikazFiguraController;
     private PrikazKategorijeController prikazKategorijeController;
     private DodajKategorijuController dodajKategorijuController;
+    public KreirajEvidencijuRadioniceController kreirajEvidencijuRadioniceController;
+    private DodajStavkuController dodajStavkuController;
     
     
     
@@ -181,6 +187,22 @@ public class Cordinator {
     public void osveziFormuPolaznik() {
         prikazPolaznikaController.osveziFormu();
     }
+
+    public void otvoriKreirajEvidencijuRadioniceForma() {
+        kreirajEvidencijuRadioniceController = new KreirajEvidencijuRadioniceController(new KreiranjeEvidencijeRadioniceForma());
+        kreirajEvidencijuRadioniceController.otvoriFormu();
+    }
+
+    public void otvoriDodajStavkuFormu(KreiranjeEvidencijeRadioniceForma kef) {
+        dodajStavkuController = new DodajStavkuController(new DodajStavkuForma(kef, true));
+        dodajStavkuController.otvoriFormu();
+    }
+
+    public void otvoriKreiranjeEvidencijeRadioniceForma() {
+        kreirajEvidencijuRadioniceController = new KreirajEvidencijuRadioniceController(new KreiranjeEvidencijeRadioniceForma());
+        kreirajEvidencijuRadioniceController.otvoriFormu();
+    }
+
     
 
 

@@ -4,6 +4,7 @@
  */
 package repository.db.impl;
 
+import java.sql.PreparedStatement;
 import domen.ApstraktniDomenskiObjekat;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,13 +39,16 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
     }
 
     @Override
-    public void add(ApstraktniDomenskiObjekat param) throws Exception {
+    public PreparedStatement add(ApstraktniDomenskiObjekat param) throws Exception {
         
-        String upit = "INSERT INTO " + param.vratiNazivTabele() + " ("+ param.vratiKoloneZaUbacivanje()+") VALUES (" + param.vratiVrednostiZaUbacivanje()+ ")";
+        String upit = "INSERT INTO " + param.vratiNazivTabele() + " ("
+                + param.vratiKoloneZaUbacivanje() + " ) VALUES ( " + param.vratiVrednostiZaUbacivanje() + " )";
+
         System.out.println(upit);
-        Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
-        st.executeUpdate(upit);
-        st.close();
+
+        PreparedStatement ps = DbConnectionFactory.getInstance().getConnection().prepareStatement(upit, Statement.RETURN_GENERATED_KEYS);
+        ps.executeUpdate();
+        return ps;
     }
 
     @Override

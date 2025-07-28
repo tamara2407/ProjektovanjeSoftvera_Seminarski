@@ -54,6 +54,13 @@ public class PrikazEvidencijeRadioniceController {
                 
                 ModelTabeleEvidencijeRadionice mte = (ModelTabeleEvidencijeRadionice) pef.getjTableEvidencijaRadionice().getModel();
                 mte.pretrazi(ime,prezime);
+                if (mte.getLista().isEmpty()) {
+                    JOptionPane.showMessageDialog(pef, "Sistem ne može da nađe evidencije radionice po zadatim kriterijumima", "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
+                    pripremiFormu();
+                } else {
+                    JOptionPane.showMessageDialog(pef, "Sistem je našao evidenciju radionice po zadatim kriterijumima", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+                    
+                }
                 
             }
         });
@@ -63,6 +70,8 @@ public class PrikazEvidencijeRadioniceController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pripremiFormu();
+                pef.getjTextFieldIme().setText("");
+                pef.getjTextFieldPrezime().setText("");
                 
             }
             
