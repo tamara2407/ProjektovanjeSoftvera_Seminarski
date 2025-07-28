@@ -44,17 +44,41 @@ public class DodajFiguruController {
             private void dodaj(ActionEvent e) {
                
                 String naziv = dff.getjTextFieldNaziv().getText().trim();
+
+                if (naziv.isEmpty()) {
+                    JOptionPane.showMessageDialog(dff, "Sistem ne može da zapamti figuru", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (!naziv.matches("[a-zA-ZšđčćžŠĐČĆŽ\\s]+")) {
+                    JOptionPane.showMessageDialog(dff, "Sistem ne može da zapamti figuru", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                
                 String tezina = String.valueOf(dff.getjComboBoxTezina().getSelectedItem());
-                double cena = Double.parseDouble(dff.getjTextFieldCena().getText());
+                double cena;
+
+                try {
+                    cena = Double.parseDouble(dff.getjTextFieldCena().getText());
+                } catch (NumberFormatException exc) {
+                    JOptionPane.showMessageDialog(dff, "Sistem ne može da zapamti figuru", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+
+                }
+                if (cena < 0) {
+                    JOptionPane.showMessageDialog(dff, "Sistem ne može da zapamti figuru", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+
+                }
                 
                 Figura f = new Figura(-1,naziv,tezina,cena);
                              
                 try{
                     komunikacija.Komunikacija.getInstance().dodajFiguru(f);
-                    JOptionPane.showMessageDialog(dff, "USPEH","USPEH",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(dff, "Sistem je kreirao figuru", "USPEŠNO",JOptionPane.INFORMATION_MESSAGE);
                     dff.dispose();
                 }catch(Exception exc){
-                    JOptionPane.showMessageDialog(dff, "GRESKA","GRESKA",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dff, exc.getMessage(), "NEUSPEŠNO",JOptionPane.ERROR_MESSAGE);
                 }
                 
             }
@@ -70,17 +94,44 @@ public class DodajFiguruController {
             private void izmeni(ActionEvent e) {
                
                 int id = Integer.parseInt(dff.getjTextFieldID().getText());
+                
                 String naziv = dff.getjTextFieldNaziv().getText().trim();
+                
+                if (naziv.isEmpty()) {
+                    JOptionPane.showMessageDialog(dff, "Sistem ne može da zapamti figuru", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (!naziv.matches("[a-zA-ZšđčćžŠĐČĆŽ\\s]+")) {
+                    JOptionPane.showMessageDialog(dff, "Sistem ne može da zapamti figuru", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                
+                
                 String tezina = String.valueOf(dff.getjComboBoxTezina().getSelectedItem());
-                double cena = Double.parseDouble(dff.getjTextFieldCena().getText());
+                
+                double cena;
+                
+                try {
+                    cena = Double.parseDouble(dff.getjTextFieldCena().getText());
+                } catch (NumberFormatException exc) {
+                    JOptionPane.showMessageDialog(dff, "Sistem ne može da zapamti figuru", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+
+                }
+                if (cena < 0) {
+                    JOptionPane.showMessageDialog(dff, "Sistem ne može da zapamti figuru", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+
+                }
                 
                 Figura f = new Figura(id,naziv,tezina,cena);                
                 try{
                     komunikacija.Komunikacija.getInstance().azurirajFiguru(f);
-                    JOptionPane.showMessageDialog(dff, "USPEH","USPEH",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(dff, "Sistem je zapamtio figuru", "USPEŠNO",JOptionPane.INFORMATION_MESSAGE);
                     dff.dispose();
                 }catch(Exception exc){
-                    JOptionPane.showMessageDialog(dff, "GRESKA","GRESKA",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dff, "Sistem ne može da zapamti figuru", "NEUSPEŠNO",JOptionPane.ERROR_MESSAGE);
                 }
                 
             }

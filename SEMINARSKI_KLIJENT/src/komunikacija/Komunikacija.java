@@ -120,26 +120,28 @@ public class Komunikacija {
         
     }
 
-    public void dodajPolaznika(Polaznik p) {
+    public void dodajPolaznika(Polaznik p) throws Exception{
         Zahtev zahtev = new Zahtev(Operacija.DODAJ_POLAZNIKA, p);
         posiljalac.posalji(zahtev);
         Odgovor odgovor = (Odgovor) primalac.primi();
         if(odgovor.getOdgovor()==null){
-            System.out.println("USPEH");
+            System.out.println("USPEŠNO");
         }else{
-            System.out.println("GRESKA");
+            Exception e = (Exception) odgovor.getOdgovor();
+            throw e;
         }
     }
 
 
-    public void dodajFiguru(Figura f) {
+    public void dodajFiguru(Figura f) throws Exception {
         Zahtev zahtev = new Zahtev(Operacija.DODAJ_FIGURU, f);
         posiljalac.posalji(zahtev);
         Odgovor odgovor = (Odgovor) primalac.primi();
         if(odgovor.getOdgovor()==null){
-            System.out.println("USPEH");
+            System.out.println("USPEŠNO");
         }else{
-            System.out.println("GRESKA");
+            Exception e = (Exception) odgovor.getOdgovor();
+            throw e;
         }
     }
 
@@ -151,9 +153,8 @@ public class Komunikacija {
         if(odg.getOdgovor()==null){
             System.out.println("USPESNO");
         }else{
-            System.out.println("GRESKA");
-            ((Exception)odg.getOdgovor()).printStackTrace();
-            throw new Exception("GRESKA");
+            Exception e = (Exception) odg.getOdgovor();
+            throw e;
         }
     }
 
@@ -171,11 +172,11 @@ public class Komunikacija {
         posiljalac.posalji(zahtev);
         Odgovor odgovor = (Odgovor) primalac.primi();
         if(odgovor.getOdgovor()==null){
-            System.out.println("USPEH");
+            System.out.println("USPEŠNO");
             cordinator.Cordinator.getInstance().osveziFormuFigura();
         }else{
-            System.out.println("GRESKA: " + odgovor.getOdgovor().toString());
-            System.out.println("GRESKA");
+            System.out.println("GREŠKA: " + odgovor.getOdgovor().toString());
+            System.out.println("GREŠKA");
         }
     }
 
@@ -231,11 +232,10 @@ public class Komunikacija {
         
         Odgovor odg = (Odgovor) primalac.primi();
         if(odg.getOdgovor()==null){
-            System.out.println("USPESNO");
+            System.out.println("USPEŠNO");
         }else{
-            System.out.println("GRESKA");
-            ((Exception)odg.getOdgovor()).printStackTrace();
-            throw new Exception("GRESKA");
+            Exception e = (Exception) odg.getOdgovor();
+            throw e;
         }
     }
 
@@ -253,10 +253,10 @@ public class Komunikacija {
         posiljalac.posalji(zahtev);
         Odgovor odgovor = (Odgovor) primalac.primi();
         if(odgovor.getOdgovor()==null){
-            System.out.println("USPEH");
+            System.out.println("USPEŠNO");
             cordinator.Cordinator.getInstance().osveziFormuPolaznik();
         }else{
-            System.out.println("GRESKA");
+            System.out.println("GREŠKA");
         }
         
     }

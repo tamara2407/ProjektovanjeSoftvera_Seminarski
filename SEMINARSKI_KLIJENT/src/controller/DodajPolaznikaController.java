@@ -47,15 +47,54 @@ public class DodajPolaznikaController {
                 String ime = dpf.getjTextFieldIme().getText().trim();
                 String prezime = dpf.getjTextFieldPrezime().getText().trim();
                 String email = dpf.getjTextFieldEmail().getText().trim();
+                
+                if (ime.isEmpty() && prezime.isEmpty() && email.isEmpty()) {
+                    JOptionPane.showMessageDialog(dpf, "Sistem ne može da kreira polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (ime.isEmpty()) {
+                    JOptionPane.showMessageDialog(dpf, "Potrebno je da unesete ime polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (!ime.matches("[a-zA-ZšđčćžŠĐČĆŽ\\s]+") || ime.length() <= 2) {
+                    JOptionPane.showMessageDialog(dpf, "Ime koje ste uneli nije odgovarajuće", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (prezime.isEmpty()) {
+                    JOptionPane.showMessageDialog(dpf, "Potrebno je da unesete prezime polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (!prezime.matches("[a-zA-ZšđčćžŠĐČĆŽ\\s]+") || prezime.length() <= 2) {
+                    JOptionPane.showMessageDialog(dpf, "Prezime koje ste uneli nije odgovarajuće", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (email.isEmpty()) {
+                    JOptionPane.showMessageDialog(dpf, "Potrebno je da unesete email polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (!email.contains("@")) {
+                    JOptionPane.showMessageDialog(dpf, "Email nije u odgovarajućem formatu", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
+
                 Kategorija kategorija = (Kategorija) dpf.getjComboBoxKategorija().getSelectedItem();
                 
+                if (kategorija == null || kategorija.getNaziv().equals("Odaberite kategoriju")) {
+                    JOptionPane.showMessageDialog(dpf, "Potrebno je da selektujete kategoriju", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
                 Polaznik p = new Polaznik(-1, ime, prezime, email, kategorija);
+                 
                 try{
                     komunikacija.Komunikacija.getInstance().dodajPolaznika(p);
-                    JOptionPane.showMessageDialog(dpf, "USPEH","USPEH",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(dpf, "Sistem je kreirao polaznika", "USPEŠNO",JOptionPane.INFORMATION_MESSAGE);
                     dpf.dispose();
                 }catch(Exception exc){
-                    JOptionPane.showMessageDialog(dpf, "GRESKA","GRESKA",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dpf, exc.getMessage(), "NEUSPEŠNO",JOptionPane.ERROR_MESSAGE);
                 }
                 
             }
@@ -74,15 +113,54 @@ public class DodajPolaznikaController {
                 String ime = dpf.getjTextFieldIme().getText().trim();
                 String prezime = dpf.getjTextFieldPrezime().getText().trim();
                 String email = dpf.getjTextFieldEmail().getText().trim();
+                
+                
+                if (ime.isEmpty() && prezime.isEmpty() && email.isEmpty()) {
+                    JOptionPane.showMessageDialog(dpf, "Unesite potrebne podatke", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (ime.isEmpty()) {
+                    JOptionPane.showMessageDialog(dpf, "Potrebno je da unesete ime polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (!ime.matches("[a-zA-ZšđčćžŠĐČĆŽ\\s]+") || ime.length() <= 2) {
+                    JOptionPane.showMessageDialog(dpf, "Ime koje ste uneli nije odgovarajuće", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (prezime.isEmpty()) {
+                    JOptionPane.showMessageDialog(dpf, "Potrebno je da unesete prezime polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (!prezime.matches("[a-zA-ZšđčćžŠĐČĆŽ\\s]+") || prezime.length() <= 2) {
+                    JOptionPane.showMessageDialog(dpf, "Prezime koje ste uneli nije odgovarajuće", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (email.isEmpty()) {
+                    JOptionPane.showMessageDialog(dpf, "Potrebno je da unesete email polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (!email.contains("@")) {
+                    JOptionPane.showMessageDialog(dpf, "Email nije u odgovarajućem formatu", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
+                
                 Kategorija kategorija = (Kategorija) dpf.getjComboBoxKategorija().getSelectedItem();
+                
+                if (kategorija == null || kategorija.getNaziv().equals("Odaberite kategoriju")) {
+                    JOptionPane.showMessageDialog(dpf, "Potrebno je da selektujete kategoriju", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 
                 Polaznik p = new Polaznik(id,ime,prezime,email,kategorija);            
                 try{
                     komunikacija.Komunikacija.getInstance().azurirajPolaznika(p);
-                    JOptionPane.showMessageDialog(dpf, "USPEH","USPEH",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(dpf, "Sistem je zapamtio polaznika", "USPEŠNO",JOptionPane.INFORMATION_MESSAGE);
                     dpf.dispose();
                 }catch(Exception exc){
-                    JOptionPane.showMessageDialog(dpf, "GRESKA","GRESKA",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dpf, "Sistem ne može da zapamti polaznika", "NEUSPEŠNO",JOptionPane.ERROR_MESSAGE);
                 }
                 
             }

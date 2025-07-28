@@ -33,20 +33,28 @@ public class PrikazFiguraController {
             public void actionPerformed(ActionEvent e) {
                 int red = pff.getjTableFigure().getSelectedRow();
                 if(red==-1){
-                    JOptionPane.showMessageDialog(pff, "Sistem ne moze da obrise figuru", "GRESKA", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(pff, "Sistem ne može da obriše proizvod", "GREŠKA", JOptionPane.ERROR_MESSAGE);
                 }else{
+                    int potvrda = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete figuru?", "POTVRDA", JOptionPane.YES_NO_OPTION);
+                    if (potvrda == JOptionPane.NO_OPTION || potvrda == JOptionPane.CLOSED_OPTION) {
+                        return;
+                    }
+                }
                     ModelTabeleFigura mtf = (ModelTabeleFigura) pff.getjTableFigure().getModel();
                     Figura f = mtf.getLista().get(red);
                     try{
                         komunikacija.Komunikacija.getInstance().obrisiFiguru(f);
-                        JOptionPane.showMessageDialog(pff, "Sistem je uspesno obrisao figuru" , "USPEH", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(pff, "Sistem je uspešno obrisao proizvod", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
                         pripremiFormu();
                     }catch(Exception ex){
-                        JOptionPane.showMessageDialog(pff, "Sistem ne moze da obrise figuru" , "GRESKA", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(pff, ex.getMessage(), "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
                     }
                 }
      
-            }
+            
+                
+            
+            
         });
         
         
@@ -55,7 +63,7 @@ public class PrikazFiguraController {
             public void actionPerformed(ActionEvent e) {
                 int red = pff.getjTableFigure().getSelectedRow();
                 if(red==-1){
-                    JOptionPane.showMessageDialog(pff, "Sistem ne moze da izmeni figuru", "GRESKA", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(pff, "Morate selektovati figuru!", "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
                 }else{
                     ModelTabeleFigura mtf = (ModelTabeleFigura) pff.getjTableFigure().getModel();
                     Figura f = mtf.getLista().get(red);
@@ -64,9 +72,8 @@ public class PrikazFiguraController {
                             
                     
                 }
-                
-                
             }
+            
         });
         
         
@@ -77,7 +84,12 @@ public class PrikazFiguraController {
                 
                 ModelTabeleFigura mtf = (ModelTabeleFigura) pff.getjTableFigure().getModel();
                 mtf.pretrazi(naziv);
-                
+                if (mtf.getLista().isEmpty()) {
+                    JOptionPane.showMessageDialog(pff, "Sistem ne može da nađe figure po zadatom kriterijumu", "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(pff, "Sistem je našao figure po zadatom kriterijumu", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+                }
+
             }
         });
         
@@ -86,6 +98,7 @@ public class PrikazFiguraController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pripremiFormu();
+                pff.getjTextFieldNaziv().setText("");
                 
             }
             

@@ -5,6 +5,9 @@
 package operacije.figura;
 
 import domen.Figura;
+import domen.StavkaEvidencijeRadionice;
+import exception.FiguraNeMozeDaSeObriseException;
+import java.util.List;
 import operacije.ApstraktnaGenerickaOperacija;
 
 /**
@@ -18,6 +21,24 @@ public class ObrisiFiguruSO extends ApstraktnaGenerickaOperacija{
         if(param==null || !(param instanceof Figura)){
             throw new Exception("Sistem ne moze da obrise figuru");
         }
+        
+        
+        Figura figura = (Figura) param;
+
+        StavkaEvidencijeRadionice stavka = new StavkaEvidencijeRadionice();
+
+        String uslov = " JOIN figura ON stavkaevidencijeradionice.figura = figura.figuraID WHERE figura = " + figura.getFiguraID();;
+
+        List<StavkaEvidencijeRadionice> stavke = broker.getAll(stavka, uslov);
+
+        boolean proizvodPostoji = !stavke.isEmpty();
+
+        if (proizvodPostoji) {
+            throw new FiguraNeMozeDaSeObriseException("Figura postoji u nekoj stavci evidencije radionice.");
+
+        }
+        
+        
     }
 
     @Override

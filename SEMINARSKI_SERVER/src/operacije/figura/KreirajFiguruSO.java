@@ -6,6 +6,8 @@ package operacije.figura;
 
 
 import domen.Figura;
+import exception.FiguraVecPostojiException;
+import java.util.List;
 import operacije.ApstraktnaGenerickaOperacija;
 
 /**
@@ -16,15 +18,18 @@ public class KreirajFiguruSO extends ApstraktnaGenerickaOperacija{
 
     @Override
     protected void preduslovi(Object param) throws Exception {
-        if(param==null || !(param instanceof Figura)){
-        throw new Exception("Sistem ne može da doda figuru");
+        if (param == null || !(param instanceof Figura)) {
+
+            throw new Exception("Sistem ne moze da kreira figuru");
         }
-        Figura f = (Figura) param;
-        if(f.getNaziv()==null || f.getNaziv().isEmpty()){
-            throw new Exception("Greška naziv");
-        }
-        if(f.getTezina()==null || f.getTezina().isEmpty()){
-            throw new Exception("Greška tezina");
+
+        Figura novaFigura = (Figura) param;
+
+        String uslov = " WHERE naziv = '" + novaFigura.getNaziv() + "'";
+        List<Figura> sveFigure = broker.getAll(novaFigura, uslov);
+
+        if (!sveFigure.isEmpty()) {
+            throw new FiguraVecPostojiException("Figura sa tim nazivom već postoji.");
         }
 
     }

@@ -9,6 +9,10 @@ import domen.Figura;
 import domen.Instruktor;
 import domen.Kategorija;
 import domen.Polaznik;
+import exception.FiguraNeMozeDaSeObriseException;
+import exception.FiguraVecPostojiException;
+import exception.PolaznikNeMozeDaSeObriseException;
+import exception.PolaznikVecPostojiException;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
@@ -87,17 +91,32 @@ public class ObradaKlijentskihZahteva extends Thread {
                         
                     case DODAJ_FIGURU:
                         Figura figura = (Figura) zahtev.getParametar();
-                        controller.Controller.getInstance().dodajFiguru(figura);
-                        odgovor.setOdgovor(null);
+                        try {
+                            controller.Controller.getInstance().dodajFiguru(figura);
+                            odgovor.setOdgovor(null);
+                        } catch (FiguraVecPostojiException fvp) {
+
+                            odgovor.setOdgovor(fvp);
+
+                        } catch (Exception excp) {
+
+                            odgovor.setOdgovor(excp);
+                        }
+
                         break;
                         
                     case OBRISI_FIGURU:
-                        try{
+                        
                         Figura Ofigura = (Figura) zahtev.getParametar();
-                        controller.Controller.getInstance().obrisiFiguru(Ofigura);
-                        odgovor.setOdgovor(null);
-                        }catch(Exception e){
-                           odgovor.setOdgovor(e);
+                        try {
+                            controller.Controller.getInstance().obrisiFiguru(Ofigura);
+                            odgovor.setOdgovor(null);
+                        } catch (FiguraNeMozeDaSeObriseException exc) {
+
+                            odgovor.setOdgovor(exc);
+                        } catch (Exception ex) {
+
+                            odgovor.setOdgovor(ex);
                         }
                         break;
                         
@@ -140,12 +159,18 @@ public class ObradaKlijentskihZahteva extends Thread {
                         break;
                         
                     case OBRISI_POLAZNIKA:
-                        try{
+                        
                         Polaznik oPolaznik = (Polaznik) zahtev.getParametar();
-                        controller.Controller.getInstance().obrisiPolaznika(oPolaznik);
-                        odgovor.setOdgovor(null);
-                        }catch(Exception e){
-                           odgovor.setOdgovor(e);
+                        
+                        try {
+                            controller.Controller.getInstance().obrisiPolaznika(oPolaznik);
+                            odgovor.setOdgovor(null);
+                        } catch (PolaznikNeMozeDaSeObriseException exc) {
+
+                            odgovor.setOdgovor(exc);
+                        } catch (Exception ex) {
+
+                            odgovor.setOdgovor(ex);
                         }
                         break;
                         
@@ -155,9 +180,22 @@ public class ObradaKlijentskihZahteva extends Thread {
                         break;
                         
                     case DODAJ_POLAZNIKA:
-                        Polaznik polaznik = (Polaznik) zahtev.getParametar();
-                        controller.Controller.getInstance().dodajPolaznika(polaznik);
-                        odgovor.setOdgovor(null);
+//                        Polaznik polaznik = (Polaznik) zahtev.getParametar();
+//                        controller.Controller.getInstance().dodajPolaznika(polaznik);
+//                        odgovor.setOdgovor(null);
+                        Polaznik Polaznik = (Polaznik) zahtev.getParametar();
+                        try {
+                            controller.Controller.getInstance().dodajPolaznika(Polaznik);
+                            odgovor.setOdgovor(null);
+
+                        } catch (PolaznikVecPostojiException pvp) {
+
+                            odgovor.setOdgovor(pvp);
+
+                        } catch (Exception excp) {
+
+                            odgovor.setOdgovor(excp);
+                        }
                         break;
                         
                     case AZURIRAJ_POLAZNIKA:

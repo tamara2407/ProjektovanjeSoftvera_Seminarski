@@ -5,6 +5,7 @@
 package operacije.polaznik;
 
 import domen.Polaznik;
+import exception.PolaznikVecPostojiException;
 import java.util.List;
 import operacije.ApstraktnaGenerickaOperacija;
 
@@ -25,13 +26,9 @@ public class KreirajPolaznikaSO extends ApstraktnaGenerickaOperacija{
         String uslov = " JOIN kategorija ON polaznik.kategorija = kategorija.kategorijaID WHERE email = '" + noviPolaznik.getEmail() + "'";
         List<Polaznik> sviPolaznici = broker.getAll(noviPolaznik, uslov);
 
-        /* for (Kupac k : sviKupci) {
-            if (k.getEmail().equalsIgnoreCase(noviKupac.getEmail())) {
-                throw new KupacVecPostojiException("Kupac sa tim email-om već postoji.");
-            }
-        }*/
+       
         if (!sviPolaznici.isEmpty()) {
-            System.out.println("GRESKA");
+            throw new PolaznikVecPostojiException("Polazink sa tim email-om već postoji.");
         }
 
     }

@@ -32,20 +32,28 @@ public class PrikazPolaznikaController {
             public void actionPerformed(ActionEvent e) {
                 int red = ppf.getjTablePolaznici().getSelectedRow();
                 if(red==-1){
-                    JOptionPane.showMessageDialog(ppf, "Sistem ne moze da obrise polaznika", "GRESKA", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(ppf, "Morate selektovati polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
                 }else{
+                    
+                    int potvrda = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete polaznika?", "POTVRDA", JOptionPane.YES_NO_OPTION);
+                    if (potvrda == JOptionPane.NO_OPTION || potvrda == JOptionPane.CLOSED_OPTION) {
+                        return;
+                    }
+                    
                     ModelTabelePolaznik mtp = (ModelTabelePolaznik) ppf.getjTablePolaznici().getModel();
                     Polaznik p = mtp.getLista().get(red);
                     try{
                         komunikacija.Komunikacija.getInstance().obrisiPolaznika(p);
-                        JOptionPane.showMessageDialog(ppf, "Sistem je uspesno obrisao polaznika" , "USPEH", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(ppf, "Sistem je uspešno obrisao proizvod", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
                         pripremiFormu();
                     }catch(Exception ex){
-                        JOptionPane.showMessageDialog(ppf, "Sistem ne moze da obrise polaznika" , "GRESKA", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(ppf, ex.getMessage(), "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
                     }
                 }
      
             }
+                  
+            
         });
         
         
@@ -54,7 +62,7 @@ public class PrikazPolaznikaController {
             public void actionPerformed(ActionEvent e) {
                 int red = ppf.getjTablePolaznici().getSelectedRow();
                 if(red==-1){
-                    JOptionPane.showMessageDialog(ppf, "Sistem ne moze da izmeni polaznika", "GRESKA", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(ppf, "Morate selektovati polaznika!", "GREŠKA", JOptionPane.ERROR_MESSAGE);
                 }else{
                     ModelTabelePolaznik mtp = (ModelTabelePolaznik) ppf.getjTablePolaznici().getModel();
                     Polaznik p = mtp.getLista().get(red);

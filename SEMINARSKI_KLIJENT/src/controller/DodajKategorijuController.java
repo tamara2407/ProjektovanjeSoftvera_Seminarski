@@ -42,13 +42,26 @@ public class DodajKategorijuController {
                
                 String naziv = dkf.getjTextFieldNaziv().getText().trim();
                 
-                Kategorija k = new Kategorija(-1,naziv);                
+                if (naziv.isEmpty()) {
+                    JOptionPane.showMessageDialog(dkf, "Potrebno je da unesete naziv kategorije", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                } 
+                if (!naziv.matches("[a-zA-ZšđčćžŠĐČĆŽ\\s]+")) {
+                    JOptionPane.showMessageDialog(dkf, "Naziv koji ste uneli nije odgovarajući", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                
+                Kategorija k = new Kategorija(-1,naziv);
+                
+                
+                
                 try{
                     komunikacija.Komunikacija.getInstance().dodajKategoriju(k);
-                    JOptionPane.showMessageDialog(dkf, "USPEH","USPEH",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(dkf, "Sistem je kreirao kategoriju", "USPEŠNO",JOptionPane.INFORMATION_MESSAGE);
                     dkf.dispose();
                 }catch(Exception exc){
-                    JOptionPane.showMessageDialog(dkf, "GRESKA","GRESKA",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dkf, "Sistem ne može da kreira kategoriju", "NEUSPEŠNO",JOptionPane.ERROR_MESSAGE);
                 }
                 
             }

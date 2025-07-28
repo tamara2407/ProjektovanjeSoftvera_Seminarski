@@ -26,6 +26,9 @@ public class AzurirajFiguruSO extends ApstraktnaGenerickaOperacija {
 //             System.out.println("DEBUG: tezina je NULL ili prazna -> " + f.getTezina());
 //            throw new Exception("Greška tezina");
 //        }
+        if (param == null || !(param instanceof Figura)) {
+            throw new Exception("Sistem ne moze da zapamti figuru");
+        }
 
     }
 

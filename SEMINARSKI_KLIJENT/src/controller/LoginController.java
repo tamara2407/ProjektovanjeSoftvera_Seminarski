@@ -41,11 +41,11 @@ public class LoginController {
                 Instruktor ulogovani = komunikacija.Komunikacija.getInstance().login(ki, pass);
                 
                 if(ulogovani==null){
-                    JOptionPane.showMessageDialog(lf,"PRIJAVA NA SISTEM NEUSPESNA","GRESKA", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(lf,"Korisničko ime i šifra nisu ispravni","GREŠKA", JOptionPane.ERROR_MESSAGE);
 
                 }else{
                     Cordinator.getInstance().setUlogovani(ulogovani);
-                    JOptionPane.showMessageDialog(lf,"PRIJAVA NA SISTEM USPESNA","USPEH", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(lf,"Korisničko ime i šifra su ispravni","USPEH", JOptionPane.INFORMATION_MESSAGE);
                     Cordinator.getInstance().otvoriGlavnuFormu();
                     lf.dispose();
                 }
