@@ -27,46 +27,46 @@ public class PrikazInstruktoraController {
 
     private void addActionListeners() {
         
-        pif.addBtnObrisiActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int red = pif.getjTableInstruktori().getSelectedRow();
-                if(red==-1){
-                    JOptionPane.showMessageDialog(pif, "Sistem ne moze da obrise instruktora", "GRESKA", JOptionPane.ERROR_MESSAGE);
-                }else{
-                    ModelTabeleInstruktor mti = (ModelTabeleInstruktor) pif.getjTableInstruktori().getModel();
-                    Instruktor i = mti.getLista().get(red);
-                    try{
-                        komunikacija.Komunikacija.getInstance().obrisiInstruktora(i);
-                        JOptionPane.showMessageDialog(pif, "Sistem je uspesno obrisao instruktora" , "USPEH", JOptionPane.INFORMATION_MESSAGE);
-                        pripremiFormu();
-                    }catch(Exception ex){
-                        JOptionPane.showMessageDialog(pif, "Sistem ne moze da obrise instruktora" , "GRESKA", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-     
-            }
-        });
+//        pif.addBtnObrisiActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int red = pif.getjTableInstruktori().getSelectedRow();
+//                if(red==-1){
+//                    JOptionPane.showMessageDialog(pif, "Sistem ne moze da obrise instruktora", "GRESKA", JOptionPane.ERROR_MESSAGE);
+//                }else{
+//                    ModelTabeleInstruktor mti = (ModelTabeleInstruktor) pif.getjTableInstruktori().getModel();
+//                    Instruktor i = mti.getLista().get(red);
+//                    try{
+//                        komunikacija.Komunikacija.getInstance().obrisiInstruktora(i);
+//                        JOptionPane.showMessageDialog(pif, "Sistem je uspesno obrisao instruktora" , "USPEH", JOptionPane.INFORMATION_MESSAGE);
+//                        pripremiFormu();
+//                    }catch(Exception ex){
+//                        JOptionPane.showMessageDialog(pif, "Sistem ne moze da obrise instruktora" , "GRESKA", JOptionPane.ERROR_MESSAGE);
+//                    }
+//                }
+//     
+//            }
+//        });
         
         
-        pif.addBtnAzurirajActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int red = pif.getjTableInstruktori().getSelectedRow();
-                if(red==-1){
-                    JOptionPane.showMessageDialog(pif, "Sistem ne moze da obrise instruktora", "GRESKA", JOptionPane.ERROR_MESSAGE);
-                }else{
-                    ModelTabeleInstruktor mti = (ModelTabeleInstruktor) pif.getjTableInstruktori().getModel();
-                    Instruktor i = mti.getLista().get(red);
-                    cordinator.Cordinator.getInstance().dodajParam("instruktor", i);
-                    cordinator.Cordinator.getInstance().otvoriIzmeniInstruktoraFormu();
-                            
-                    
-                }
-                
-                
-            }
-        });
+//        pif.addBtnAzurirajActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int red = pif.getjTableInstruktori().getSelectedRow();
+//                if(red==-1){
+//                    JOptionPane.showMessageDialog(pif, "Sistem ne moze da zapamti instruktora", "GRESKA", JOptionPane.ERROR_MESSAGE);
+//                }else{
+//                    ModelTabeleInstruktor mti = (ModelTabeleInstruktor) pif.getjTableInstruktori().getModel();
+//                    Instruktor i = mti.getLista().get(red);
+//                    cordinator.Cordinator.getInstance().dodajParam("instruktor", i);
+//                    cordinator.Cordinator.getInstance().otvoriIzmeniInstruktoraFormu();
+//                            
+//                    
+//                }
+//                
+//                
+//            }
+//        });
         
         
         pif.addBtnPretraziActionListener(new ActionListener() {
@@ -77,6 +77,13 @@ public class PrikazInstruktoraController {
                 
                 ModelTabeleInstruktor mti = (ModelTabeleInstruktor) pif.getjTableInstruktori().getModel();
                 mti.pretrazi(ime,prezime);
+                if (mti.getLista().isEmpty()) {
+                    JOptionPane.showMessageDialog(pif, "Sistem ne može da nađe instruktore po zadatim kriterijumima", "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
+                    pripremiFormu();
+                } else {
+                    JOptionPane.showMessageDialog(pif, "Sistem je našao instruktore po zadatim kriterijumima", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+                    
+                }
                 
             }
         });
@@ -86,6 +93,8 @@ public class PrikazInstruktoraController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pripremiFormu();
+                pif.getjTextFieldIme().setText("");
+                pif.getjTextFieldPrezime().setText("");
                 
             }
             

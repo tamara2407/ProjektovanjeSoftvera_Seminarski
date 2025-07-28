@@ -39,7 +39,6 @@ public class DodajKategorijuForma extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextFieldID = new javax.swing.JTextField();
         jButtonDodaj = new javax.swing.JButton();
-        jButtonAzuriraj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,8 +47,6 @@ public class DodajKategorijuForma extends javax.swing.JFrame {
         jLabel6.setText("ID");
 
         jButtonDodaj.setText("Dodaj");
-
-        jButtonAzuriraj.setText("Ažuriraj");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,8 +64,6 @@ public class DodajKategorijuForma extends javax.swing.JFrame {
                 .addGap(236, 236, 236))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAzuriraj)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonDodaj)
                 .addGap(49, 49, 49))
         );
@@ -84,9 +79,7 @@ public class DodajKategorijuForma extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonDodaj)
-                    .addComponent(jButtonAzuriraj))
+                .addComponent(jButtonDodaj)
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -94,7 +87,6 @@ public class DodajKategorijuForma extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAzuriraj;
     private javax.swing.JButton jButtonDodaj;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
@@ -105,17 +97,17 @@ public class DodajKategorijuForma extends javax.swing.JFrame {
 public void dodajKategorijuAddActionListener(ActionListener actionListener) {
         jButtonDodaj.addActionListener(actionListener);
     }
-    public void izmeniKategorijuAddActionListener(ActionListener actionListener) {
-        jButtonAzuriraj.addActionListener(actionListener);
-    }
-
-    public JButton getjButtonAzuriraj() {
-        return jButtonAzuriraj;
-    }
-
-    public void setjButtonAzuriraj(JButton jButtonAzuriraj) {
-        this.jButtonAzuriraj = jButtonAzuriraj;
-    }
+//    public void izmeniKategorijuAddActionListener(ActionListener actionListener) {
+//        jButtonAzuriraj.addActionListener(actionListener);
+//    }
+//
+//    public JButton getjButtonAzuriraj() {
+//        return jButtonAzuriraj;
+//    }
+//
+//    public void setjButtonAzuriraj(JButton jButtonAzuriraj) {
+//        this.jButtonAzuriraj = jButtonAzuriraj;
+//    }
 
     public JButton getjButtonDodaj() {
         return jButtonDodaj;

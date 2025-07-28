@@ -5,6 +5,9 @@
 package operacije.instruktori;
 
 import domen.Instruktor;
+import exception.InstruktorVecPostojiException;
+import exception.PolaznikVecPostojiException;
+import java.util.List;
 import operacije.ApstraktnaGenerickaOperacija;
 
 /**
@@ -15,24 +18,18 @@ public class KreirajInstruktoraSO extends ApstraktnaGenerickaOperacija{
 
     @Override
     protected void preduslovi(Object param) throws Exception {
-        if(param==null || !(param instanceof Instruktor)){
-        throw new Exception("Sistem ne može da doda instruktora");
+        if (param == null || !(param instanceof Instruktor)) {
+
+            throw new Exception("Sistem ne moze da kreira kupca");
         }
-        Instruktor i = (Instruktor) param;
-        if(i.getIme()==null || i.getIme().isEmpty()){
-            throw new Exception("Greška ime");
-        }
-        if(i.getPrezime()==null || i.getPrezime().isEmpty()){
-            throw new Exception("Greška prezime");
-        }
-        if(i.getEmail()==null || !(i.getEmail().contains("@"))){
-            throw new Exception("Greška email");
-        }
-        if(i.getKorisnickoIme()==null || i.getKorisnickoIme().isEmpty()){
-            throw new Exception("Greška korisničko ime");
-        }
-        if(i.getLozinka()==null || i.getLozinka().isEmpty()){
-            throw new Exception("Greška lozinka");
+        Instruktor noviInstruktor = (Instruktor) param;
+
+        String uslov = " WHERE korisnickoIme = '" + noviInstruktor.getKorisnickoIme()+ "'";
+        List<Instruktor> sviInstruktori = broker.getAll(noviInstruktor, uslov);
+
+       
+        if (!sviInstruktori.isEmpty()) {
+            throw new InstruktorVecPostojiException("Instruktor sa tim korisničkim imenom već postoji.");
         }
     }
 

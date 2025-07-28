@@ -68,28 +68,28 @@ public class DodajKategorijuController {
         });
         
         
-        dkf.izmeniKategorijuAddActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                izmeni(e);
-            }
-
-            private void izmeni(ActionEvent e) {
-               
-                int id = Integer.parseInt(dkf.getjTextFieldID().getText());
-                String naziv = dkf.getjTextFieldNaziv().getText().trim();
-                
-                Kategorija k = new Kategorija(id,naziv);                
-                try{
-                    komunikacija.Komunikacija.getInstance().azurirajKategoriju(k);
-                    JOptionPane.showMessageDialog(dkf, "USPEH","USPEH",JOptionPane.INFORMATION_MESSAGE);
-                    dkf.dispose();
-                }catch(Exception exc){
-                    JOptionPane.showMessageDialog(dkf, "GRESKA","GRESKA",JOptionPane.ERROR_MESSAGE);
-                }
-                
-            }
-        });
+//        dkf.izmeniKategorijuAddActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                izmeni(e);
+//            }
+//
+//            private void izmeni(ActionEvent e) {
+//               
+//                int id = Integer.parseInt(dkf.getjTextFieldID().getText());
+//                String naziv = dkf.getjTextFieldNaziv().getText().trim();
+//                
+//                Kategorija k = new Kategorija(id,naziv);                
+//                try{
+//                    komunikacija.Komunikacija.getInstance().azurirajKategoriju(k);
+//                    JOptionPane.showMessageDialog(dkf, "USPEH","USPEH",JOptionPane.INFORMATION_MESSAGE);
+//                    dkf.dispose();
+//                }catch(Exception exc){
+//                    JOptionPane.showMessageDialog(dkf, "GRESKA","GRESKA",JOptionPane.ERROR_MESSAGE);
+//                }
+//                
+//            }
+//        });
         
     }
 
@@ -97,7 +97,7 @@ public class DodajKategorijuController {
         switch (mod) {
             case DODAJ:
                 dkf.getjTextFieldID().setEnabled(false);
-                dkf.getjButtonAzuriraj().setVisible(false);
+                //dkf.getjButtonAzuriraj().setVisible(false);
                 dkf.getjButtonDodaj().setVisible(true);
                 dkf.getjButtonDodaj().setEnabled(true);
                 dkf.getjLabelID().setVisible(false);
@@ -105,8 +105,8 @@ public class DodajKategorijuController {
                 break;
             case IZMENI:
                 dkf.getjButtonDodaj().setVisible(false);
-                dkf.getjButtonAzuriraj().setVisible(true);
-                dkf.getjButtonAzuriraj().setEnabled(true);    
+                //dkf.getjButtonAzuriraj().setVisible(true);
+                //dkf.getjButtonAzuriraj().setEnabled(true);    
                 Kategorija k = (Kategorija) cordinator.Cordinator.getInstance().vratiParam("kategorija");
                 dkf.getjTextFieldNaziv().setText(k.getNaziv());
                 dkf.getjTextFieldID().setText(k.getKategorijaID()+"");

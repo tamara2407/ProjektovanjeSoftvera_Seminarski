@@ -40,8 +40,6 @@ public class PrikazKategorijeForma extends javax.swing.JFrame {
         jButtonResetuj = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableKategorije = new javax.swing.JTable();
-        jButtonObrisi = new javax.swing.JButton();
-        jButtonAzuriraj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,20 +62,10 @@ public class PrikazKategorijeForma extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableKategorije);
 
-        jButtonObrisi.setText("Obrisi");
-
-        jButtonAzuriraj.setText("Ažuriraj");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAzuriraj)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonObrisi)
-                .addGap(59, 59, 59))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -103,56 +91,16 @@ public class PrikazKategorijeForma extends javax.swing.JFrame {
                     .addComponent(jTextFieldNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonPretrazi)
                     .addComponent(jButtonResetuj))
-                .addGap(30, 30, 30)
+                .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAzuriraj)
-                    .addComponent(jButtonObrisi))
-                .addGap(28, 28, 28))
+                .addGap(50, 50, 50))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrikazKategorijeForma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrikazKategorijeForma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrikazKategorijeForma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrikazKategorijeForma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PrikazKategorijeForma().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAzuriraj;
-    private javax.swing.JButton jButtonObrisi;
     private javax.swing.JButton jButtonPretrazi;
     private javax.swing.JButton jButtonResetuj;
     private javax.swing.JLabel jLabel1;
@@ -161,13 +109,13 @@ public class PrikazKategorijeForma extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNaziv;
     // End of variables declaration//GEN-END:variables
 
-    public void addBtnObrisiActionListener(ActionListener actionListener) {
-        jButtonObrisi.addActionListener(actionListener);
-    }
-    
-    public void addBtnAzurirajActionListener(ActionListener actionListener) {
-        jButtonAzuriraj.addActionListener(actionListener);
-    }
+//    public void addBtnObrisiActionListener(ActionListener actionListener) {
+//        jButtonObrisi.addActionListener(actionListener);
+//    }
+//    
+//    public void addBtnAzurirajActionListener(ActionListener actionListener) {
+//        jButtonAzuriraj.addActionListener(actionListener);
+//    }
     public void addBtnPretraziActionListener(ActionListener actionListener) {
         jButtonPretrazi.addActionListener(actionListener);
     }
@@ -195,21 +143,21 @@ public class PrikazKategorijeForma extends javax.swing.JFrame {
         this.jTextFieldNaziv = jTextFieldNaziv;
     }
 
-    public JButton getjButtonAzuriraj() {
-        return jButtonAzuriraj;
-    }
-
-    public void setjButtonAzuriraj(JButton jButtonAzuriraj) {
-        this.jButtonAzuriraj = jButtonAzuriraj;
-    }
-
-    public JButton getjButtonObrisi() {
-        return jButtonObrisi;
-    }
-
-    public void setjButtonObrisi(JButton jButtonObrisi) {
-        this.jButtonObrisi = jButtonObrisi;
-    }
+//    public JButton getjButtonAzuriraj() {
+//        return jButtonAzuriraj;
+//    }
+//
+//    public void setjButtonAzuriraj(JButton jButtonAzuriraj) {
+//        this.jButtonAzuriraj = jButtonAzuriraj;
+//    }
+//
+//    public JButton getjButtonObrisi() {
+//        return jButtonObrisi;
+//    }
+//
+//    public void setjButtonObrisi(JButton jButtonObrisi) {
+//        this.jButtonObrisi = jButtonObrisi;
+//    }
 
     public JButton getjButtonPretrazi() {
         return jButtonPretrazi;

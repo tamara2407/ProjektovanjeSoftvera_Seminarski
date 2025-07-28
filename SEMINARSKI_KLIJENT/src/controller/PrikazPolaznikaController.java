@@ -44,7 +44,7 @@ public class PrikazPolaznikaController {
                     Polaznik p = mtp.getLista().get(red);
                     try{
                         komunikacija.Komunikacija.getInstance().obrisiPolaznika(p);
-                        JOptionPane.showMessageDialog(ppf, "Sistem je uspešno obrisao proizvod", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(ppf, "Sistem je uspešno obrisao polaznika", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
                         pripremiFormu();
                     }catch(Exception ex){
                         JOptionPane.showMessageDialog(ppf, ex.getMessage(), "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);

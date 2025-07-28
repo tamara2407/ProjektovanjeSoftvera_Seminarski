@@ -134,10 +134,10 @@ public class Cordinator {
         dodajKategorijuController.otvoriFormu(FormaMod.DODAJ);    }
         
         
-    public void otvoriIzmeniKategorijuFormu() {
-        dodajKategorijuController = new DodajKategorijuController(new DodajKategorijuForma());
-        dodajKategorijuController.otvoriFormu(FormaMod.IZMENI);
-    }
+//    public void otvoriIzmeniKategorijuFormu() {
+//        dodajKategorijuController = new DodajKategorijuController(new DodajKategorijuForma());
+//        dodajKategorijuController.otvoriFormu(FormaMod.IZMENI);
+//    }
     
     public void otvoriPrikazPolaznikaFormu() {
         prikazPolaznikaController = new PrikazPolaznikaController(new PrikazPolaznikaForma());

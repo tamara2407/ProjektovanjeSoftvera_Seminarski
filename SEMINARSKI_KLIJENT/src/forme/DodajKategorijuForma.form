@@ -38,8 +38,6 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButtonAzuriraj" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jButtonDodaj" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
           </Group>
@@ -59,10 +57,7 @@
                   <Component id="jTextFieldNaziv" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonDodaj" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonAzuriraj" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jButtonDodaj" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="31" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -86,11 +81,6 @@
     <Component class="javax.swing.JButton" name="jButtonDodaj">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dodaj"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonAzuriraj">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="A&#x17e;uriraj"/>
       </Properties>
     </Component>
   </SubComponents>

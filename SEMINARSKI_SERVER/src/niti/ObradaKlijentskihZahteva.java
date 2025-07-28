@@ -11,6 +11,7 @@ import domen.Kategorija;
 import domen.Polaznik;
 import exception.FiguraNeMozeDaSeObriseException;
 import exception.FiguraVecPostojiException;
+import exception.InstruktorVecPostojiException;
 import exception.PolaznikNeMozeDaSeObriseException;
 import exception.PolaznikVecPostojiException;
 import java.io.IOException;
@@ -73,8 +74,18 @@ public class ObradaKlijentskihZahteva extends Thread {
                         
                     case DODAJ_INSTRUKTORA:
                         Instruktor instruktor = (Instruktor) zahtev.getParametar();
-                        controller.Controller.getInstance().dodajInstruktora(instruktor);
-                        odgovor.setOdgovor(null);
+                                                try {
+                            controller.Controller.getInstance().dodajInstruktora(instruktor);
+                            odgovor.setOdgovor(null);
+                        } catch (InstruktorVecPostojiException ivp) {
+
+                            odgovor.setOdgovor(ivp);
+
+                        } catch (Exception excp) {
+
+                            odgovor.setOdgovor(excp);
+                        }
+
                         break;
                         
                     case AZURIRAJ_INSTRUKTORA:

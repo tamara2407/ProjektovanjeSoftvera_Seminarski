@@ -28,46 +28,46 @@ public class PrikazKategorijeController {
 
     private void addActionListeners() {
         
-        pkf.addBtnObrisiActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int red = pkf.getjTableKategorije().getSelectedRow();
-                if(red==-1){
-                    JOptionPane.showMessageDialog(pkf, "Sistem ne moze da obrise kategoriju", "GRESKA", JOptionPane.ERROR_MESSAGE);
-                }else{
-                    ModelTabeleKategorije mtk = (ModelTabeleKategorije) pkf.getjTableKategorije().getModel();
-                    Kategorija k = mtk.getLista().get(red);
-                    try{
-                        komunikacija.Komunikacija.getInstance().obrisiKategoriju(k);
-                        JOptionPane.showMessageDialog(pkf, "Sistem je uspesno obrisao kategoriju" , "USPEH", JOptionPane.INFORMATION_MESSAGE);
-                        pripremiFormu();
-                    }catch(Exception ex){
-                        JOptionPane.showMessageDialog(pkf, "Sistem ne moze da obrise kategoriju" , "GRESKA", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-     
-            }
-        });
+//        pkf.addBtnObrisiActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int red = pkf.getjTableKategorije().getSelectedRow();
+//                if(red==-1){
+//                    JOptionPane.showMessageDialog(pkf, "Sistem ne moze da obrise kategoriju", "GRESKA", JOptionPane.ERROR_MESSAGE);
+//                }else{
+//                    ModelTabeleKategorije mtk = (ModelTabeleKategorije) pkf.getjTableKategorije().getModel();
+//                    Kategorija k = mtk.getLista().get(red);
+//                    try{
+//                        komunikacija.Komunikacija.getInstance().obrisiKategoriju(k);
+//                        JOptionPane.showMessageDialog(pkf, "Sistem je uspesno obrisao kategoriju" , "USPEH", JOptionPane.INFORMATION_MESSAGE);
+//                        pripremiFormu();
+//                    }catch(Exception ex){
+//                        JOptionPane.showMessageDialog(pkf, "Sistem ne moze da obrise kategoriju" , "GRESKA", JOptionPane.ERROR_MESSAGE);
+//                    }
+//                }
+//     
+//            }
+//        });
         
         
-        pkf.addBtnAzurirajActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int red = pkf.getjTableKategorije().getSelectedRow();
-                if(red==-1){
-                    JOptionPane.showMessageDialog(pkf, "Sistem ne moze da izmeni kategoriju", "GRESKA", JOptionPane.ERROR_MESSAGE);
-                }else{
-                    ModelTabeleKategorije mtk = (ModelTabeleKategorije) pkf.getjTableKategorije().getModel();
-                    Kategorija k = mtk.getLista().get(red);
-                    cordinator.Cordinator.getInstance().dodajParam("kategorija", k);
-                    cordinator.Cordinator.getInstance().otvoriIzmeniKategorijuFormu();
-                            
-                    
-                }
-                
-                
-            }
-        });
+//        pkf.addBtnAzurirajActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int red = pkf.getjTableKategorije().getSelectedRow();
+//                if(red==-1){
+//                    JOptionPane.showMessageDialog(pkf, "Sistem ne moze da izmeni kategoriju", "GRESKA", JOptionPane.ERROR_MESSAGE);
+//                }else{
+//                    ModelTabeleKategorije mtk = (ModelTabeleKategorije) pkf.getjTableKategorije().getModel();
+//                    Kategorija k = mtk.getLista().get(red);
+//                    cordinator.Cordinator.getInstance().dodajParam("kategorija", k);
+//                    cordinator.Cordinator.getInstance().otvoriIzmeniKategorijuFormu();
+//                            
+//                    
+//                }
+//                
+//                
+//            }
+//        });
         
         
         pkf.addBtnPretraziActionListener(new ActionListener() {
@@ -77,8 +77,16 @@ public class PrikazKategorijeController {
                 
                 ModelTabeleKategorije mtk = (ModelTabeleKategorije) pkf.getjTableKategorije().getModel();
                 mtk.pretrazi(naziv);
+                if (mtk.getLista().isEmpty()) {
+                    JOptionPane.showMessageDialog(pkf, "Sistem ne može da nađe kategorije po zadatom kriterijumu", "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(pkf, "Sistem je našao kategoriju po zadatom kriterijumu", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+                }
                 
             }
+            
+            
+            
         });
         
         
@@ -86,7 +94,8 @@ public class PrikazKategorijeController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pripremiFormu();
-                
+                pkf.getjTextFieldNaziv().setText("");
+
             }
             
         });

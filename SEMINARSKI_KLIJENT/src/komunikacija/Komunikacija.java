@@ -86,7 +86,7 @@ public class Komunikacija {
         
     }
 
-    public void dodajInstruktora(Instruktor i) {
+    public void dodajInstruktora(Instruktor i) throws Exception {
         
         Zahtev zahtev = new Zahtev(Operacija.DODAJ_INSTRUKTORA, i);
         posiljalac.posalji(zahtev);
@@ -94,7 +94,8 @@ public class Komunikacija {
         if(odgovor.getOdgovor()==null){
             System.out.println("USPEH");
         }else{
-            System.out.println("GRESKA");
+            Exception e = (Exception) odgovor.getOdgovor();
+            throw e;
         }
     }
 
@@ -189,20 +190,20 @@ public class Komunikacija {
         return kategorije;
     }
 
-    public void obrisiKategoriju(Kategorija k) throws Exception {
-        
-        Zahtev zahtev = new Zahtev(Operacija.OBRISI_KATEGORIJU,k);
-        posiljalac.posalji(zahtev);
-        
-        Odgovor odg = (Odgovor) primalac.primi();
-        if(odg.getOdgovor()==null){
-            System.out.println("USPESNO");
-        }else{
-            System.out.println("GRESKA");
-            ((Exception)odg.getOdgovor()).printStackTrace();
-            throw new Exception("GRESKA");
-        }
-    }
+//    public void obrisiKategoriju(Kategorija k) throws Exception {
+//        
+//        Zahtev zahtev = new Zahtev(Operacija.OBRISI_KATEGORIJU,k);
+//        posiljalac.posalji(zahtev);
+//        
+//        Odgovor odg = (Odgovor) primalac.primi();
+//        if(odg.getOdgovor()==null){
+//            System.out.println("USPESNO");
+//        }else{
+//            System.out.println("GRESKA");
+//            ((Exception)odg.getOdgovor()).printStackTrace();
+//            throw new Exception("GRESKA");
+//        }
+//    }
 
     public void dodajKategoriju(Kategorija k) {
         Zahtev zahtev = new Zahtev(Operacija.DODAJ_KATEGORIJU, k);
@@ -214,17 +215,17 @@ public class Komunikacija {
             System.out.println("GRESKA");
         }    }
 
-    public void azurirajKategoriju(Kategorija k) {
-        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_KATEGORIJU, k);
-        posiljalac.posalji(zahtev);
-        Odgovor odgovor = (Odgovor) primalac.primi();
-        if(odgovor.getOdgovor()==null){
-            System.out.println("USPEH");
-            cordinator.Cordinator.getInstance().osveziFormuKategorija();
-        }else{
-            System.out.println("GRESKA");
-        }
-    }
+//    public void azurirajKategoriju(Kategorija k) {
+//        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_KATEGORIJU, k);
+//        posiljalac.posalji(zahtev);
+//        Odgovor odgovor = (Odgovor) primalac.primi();
+//        if(odgovor.getOdgovor()==null){
+//            System.out.println("USPEH");
+//            cordinator.Cordinator.getInstance().osveziFormuKategorija();
+//        }else{
+//            System.out.println("GRESKA");
+//        }
+//    }
 
     public void obrisiPolaznika(Polaznik p) throws Exception {
         Zahtev zahtev = new Zahtev(Operacija.OBRISI_POLAZNIKA,p);
