@@ -160,7 +160,7 @@ public class StavkaEvidencijeRadionice implements ApstraktniDomenskiObjekat {
 
     @Override
     public String vratiPrimarniKljuc() {
-        return "stavkanaevidencijeradionice.rb=" + rb + " AND stavkanaevidencijeradionice.evidencijaRadioniceID=" + evidencijaRadionice.getEvidencijaRadioniceID();
+        return "stavkaevidencijeradionice.rb=" + rb + " AND stavkaevidencijeradionice.evidencijaRadioniceID=" + evidencijaRadionice.getEvidencijaRadioniceID();
     }
 
     @Override

@@ -9,6 +9,7 @@ import domen.Figura;
 import domen.Instruktor;
 import domen.Kategorija;
 import domen.Polaznik;
+import domen.StavkaEvidencijeRadionice;
 import exception.FiguraNeMozeDaSeObriseException;
 import exception.FiguraVecPostojiException;
 import exception.InstruktorVecPostojiException;
@@ -218,6 +219,21 @@ public class ObradaKlijentskihZahteva extends Thread {
                     case DODAJ_EVIDENCIJU_RADIONICE:
                         EvidencijaRadionice evidencija = (EvidencijaRadionice) zahtev.getParametar();
                         controller.Controller.getInstance().dodajEvidencijuRadionice(evidencija);
+                        odgovor.setOdgovor(null);
+                        break;
+                    case UCITAJ_EVIDENCIJE_ZAPOSLENI:
+                        Instruktor in = (Instruktor) zahtev.getParametar();
+                        List<EvidencijaRadionice> evidencijeZaposlenog = controller.Controller.getInstance().ucitajEvidencijeRadionica(in);
+                        odgovor.setOdgovor(evidencijeZaposlenog);
+                        break;
+                    case UCITAJ_STAVKE:
+                        int id = (int) zahtev.getParametar();
+                        List<StavkaEvidencijeRadionice> stavke = controller.Controller.getInstance().ucitajStavkeZaEvidencijuRadionice(id);
+                        odgovor.setOdgovor(stavke);
+                        break;
+                    case IZMENI_EVIDENCIJU_RADIONICE:
+                        EvidencijaRadionice er = (EvidencijaRadionice) zahtev.getParametar();
+                        controller.Controller.getInstance().izmeniEvidencijuRadionice(er);
                         odgovor.setOdgovor(null);
                         break;
                         

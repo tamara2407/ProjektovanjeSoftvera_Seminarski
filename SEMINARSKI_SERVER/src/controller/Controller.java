@@ -9,9 +9,12 @@ import domen.Figura;
 import domen.Instruktor;
 import domen.Kategorija;
 import domen.Polaznik;
+import domen.StavkaEvidencijeRadionice;
 import java.util.List;
+import operacije.evidencijaRadionice.AzurirajEvidencijuRadioniceSO;
 import operacije.evidencijaRadionice.KreirajEvidencijuRadioniceSO;
 import operacije.evidencijaRadionice.UcitajEvidencijeRadionicaSO;
+import operacije.evidencijaRadionice.UcitajEvidencijeZaposlenogSO;
 import operacije.figura.AzurirajFiguruSO;
 import operacije.figura.KreirajFiguruSO;
 import operacije.figura.ObrisiFiguruSO;
@@ -29,6 +32,7 @@ import operacije.polaznik.IzmeniPolaznikaSO;
 import operacije.polaznik.KreirajPolaznikaSO;
 import operacije.polaznik.ObrisiPolaznikaSO;
 import operacije.polaznik.UcitajPolaznikeSO;
+import operacije.stavkeevidencijeradionice.UcitajStavkeSO;
 
 /**
  *
@@ -155,6 +159,22 @@ public class Controller {
     public void dodajEvidencijuRadionice(EvidencijaRadionice evidencija) throws Exception {
         KreirajEvidencijuRadioniceSO operacija = new KreirajEvidencijuRadioniceSO();
         operacija.izvrsi(evidencija, null);
+    }
+
+    public List<EvidencijaRadionice> ucitajEvidencijeRadionica(Instruktor in) throws Exception {
+        UcitajEvidencijeZaposlenogSO operacija = new UcitajEvidencijeZaposlenogSO();
+        operacija.izvrsi(in, null);
+        return operacija.getLista();
+    }
+
+    public List<StavkaEvidencijeRadionice> ucitajStavkeZaEvidencijuRadionice(int id) throws Exception {
+        UcitajStavkeSO operacija = new UcitajStavkeSO();
+        operacija.izvrsi(null, id + "");
+        return operacija.getStavke();    }
+
+    public void izmeniEvidencijuRadionice(EvidencijaRadionice er) throws Exception {
+        AzurirajEvidencijuRadioniceSO operacija = new AzurirajEvidencijuRadioniceSO();
+        operacija.izvrsi(er, null);
     }
     
 }

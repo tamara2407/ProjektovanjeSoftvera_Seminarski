@@ -78,5 +78,14 @@ public class ModelTabeleEvidencijeRadionice extends AbstractTableModel {
         this.lista = filteredList;
         fireTableDataChanged();
     }
+
+    public void pretrazi(String imePrezime) {
+        List<EvidencijaRadionice> filteredList = lista.stream()
+                .filter(e -> (imePrezime == null || imePrezime.isEmpty() || e.getPolaznik().getIme().toLowerCase().contains(imePrezime.toLowerCase()) || e.getPolaznik().getPrezime().toLowerCase().contains(imePrezime.toLowerCase())))
+                .collect(Collectors.toList());
+        
+        this.lista = filteredList;
+        fireTableDataChanged();
+    }
     
 }

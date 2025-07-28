@@ -11,6 +11,9 @@ import controller.DodajPolaznikaController;
 import controller.DodajStavkuController;
 //import controller.DodajPolaznikaController;
 import controller.GlavnaFormaController;
+import controller.IzmeniBrojCasovaController;
+import controller.IzmeniEvidencijuRadioniceController;
+import controller.IzmeniStavkuController;
 import controller.LoginController;
 import controller.PrikazEvidencijeRadioniceController;
 import controller.PrikazFiguraController;
@@ -19,6 +22,7 @@ import controller.PrikazKategorijeController;
 import controller.PrikazPolaznikaController;
 import controller.KreirajEvidencijuRadioniceController;
 import domen.Instruktor;
+import domen.StavkaEvidencijeRadionice;
 import forme.DodajFiguruForma;
 import forme.DodajInstruktoraForma;
 import forme.DodajKategorijuForma;
@@ -26,6 +30,9 @@ import forme.DodajPolaznikaForma;
 import forme.DodajStavkuForma;
 import forme.FormaMod;
 import forme.GlavnaForma;
+import forme.IzmeniBrojCasovaForma;
+import forme.IzmeniEvidencijuRadioniceForma;
+import forme.IzmeniStavkuForma;
 import forme.KreiranjeEvidencijeRadioniceForma;
 import forme.LoginForma;
 import forme.PrikazEvidencijeRadioniceForma;
@@ -59,6 +66,9 @@ public class Cordinator {
     private DodajKategorijuController dodajKategorijuController;
     public KreirajEvidencijuRadioniceController kreirajEvidencijuRadioniceController;
     private DodajStavkuController dodajStavkuController;
+    private IzmeniStavkuController izmeniStavkuController;
+    private IzmeniBrojCasovaController izmeniBrojCasovaController;
+    private IzmeniEvidencijuRadioniceController izmeniEvidencijuRadioniceController;
     
     
     
@@ -201,6 +211,23 @@ public class Cordinator {
     public void otvoriKreiranjeEvidencijeRadioniceForma() {
         kreirajEvidencijuRadioniceController = new KreirajEvidencijuRadioniceController(new KreiranjeEvidencijeRadioniceForma());
         kreirajEvidencijuRadioniceController.otvoriFormu();
+    }
+
+    public void otvoriIzmeniStavkuFormu(IzmeniEvidencijuRadioniceForma ief) {
+        izmeniStavkuController = new IzmeniStavkuController(new IzmeniStavkuForma(ief, true));
+        izmeniStavkuController.otvoriFormu();
+    }
+
+    public void otvoriIzmeniBrojCasovaFormu(IzmeniStavkuForma f, StavkaEvidencijeRadionice s) {
+        izmeniBrojCasovaController = new IzmeniBrojCasovaController(new IzmeniBrojCasovaForma(f, true));
+        izmeniBrojCasovaController.setStavka(s);
+
+        izmeniBrojCasovaController.otvoriFormu();
+    }
+
+    public void otvoriIzmeniEvidencijuRadioniceFormu() {
+        izmeniEvidencijuRadioniceController = new IzmeniEvidencijuRadioniceController(new IzmeniEvidencijuRadioniceForma());
+        izmeniEvidencijuRadioniceController.otvoriFormu();
     }
 
     

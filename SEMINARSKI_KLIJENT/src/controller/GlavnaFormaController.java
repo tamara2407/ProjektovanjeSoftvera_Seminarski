@@ -40,15 +40,15 @@ public class GlavnaFormaController {
             }
 
         });
-//        gf.izmeniAddActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                 koordinator.Koordinator.getInstance().otvoriIzmeniNarudzbenicuFormu();
-//                
-//
-//            }
-//
-//        });
+        gf.izmeniAddActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cordinator.Cordinator.getInstance().otvoriIzmeniEvidencijuRadioniceFormu();
+                
+
+            }
+
+        });
 
     }
     

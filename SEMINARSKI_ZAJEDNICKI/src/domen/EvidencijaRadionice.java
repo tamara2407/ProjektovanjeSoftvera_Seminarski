@@ -170,7 +170,8 @@ public class EvidencijaRadionice implements ApstraktniDomenskiObjekat{
 
     @Override
     public String vratiVrednostiZaIzmenu() {
-        return "cena="+cena+",datum='"+datum+"',instruktor="+instruktor.getInstruktorID()+",polaznik="+polaznik.getPolaznikID();
+        java.sql.Date sqlDate = new java.sql.Date(datum.getTime());
+        return "cena="+cena+",datum='"+sqlDate+"',instruktor="+instruktor.getInstruktorID()+",polaznik="+polaznik.getPolaznikID();
     }
     
     

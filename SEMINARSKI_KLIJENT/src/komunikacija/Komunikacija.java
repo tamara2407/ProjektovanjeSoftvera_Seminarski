@@ -9,6 +9,7 @@ import domen.Figura;
 import domen.Instruktor;
 import domen.Kategorija;
 import domen.Polaznik;
+import domen.StavkaEvidencijeRadionice;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -271,6 +272,42 @@ public class Komunikacija {
             System.out.println("USPEŠNO");
         } else {
             System.out.println("GRESKA");
+        }
+    }
+
+    public List<EvidencijaRadionice> ucitajEvidencijeUlogovanog(Instruktor ulogovani) {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_EVIDENCIJE_ZAPOSLENI, ulogovani);
+        List<EvidencijaRadionice> evidencije = new ArrayList<>();
+
+        posiljalac.posalji(zahtev);
+
+        Odgovor odgovor = (Odgovor) primalac.primi();
+
+        evidencije = (List<EvidencijaRadionice>) odgovor.getOdgovor();
+
+        return evidencije;
+    }
+
+    public List<StavkaEvidencijeRadionice> ucitajStavkeZaEvidencijuRadionice(int evidencijaRadioniceID) {
+        Zahtev zahtev = new Zahtev(Operacija.UCITAJ_STAVKE, evidencijaRadioniceID);
+        List<StavkaEvidencijeRadionice> stavke = new ArrayList<>();
+        posiljalac.posalji(zahtev);
+
+        Odgovor odg = (Odgovor) primalac.primi();
+        stavke = (List<StavkaEvidencijeRadionice>) odg.getOdgovor();
+
+        return stavke;
+    }
+
+    public void izmeniEvidencijuRadionice(EvidencijaRadionice er) {
+        Zahtev zahtev = new Zahtev(Operacija.IZMENI_EVIDENCIJU_RADIONICE, er);
+        posiljalac.posalji(zahtev);
+
+        Odgovor odg = (Odgovor) primalac.primi();
+        if (odg.getOdgovor() == null) {
+            System.out.println("USPESNO");
+        } else {
+            System.out.println("NEUSPESNO");
         }
     }
 
