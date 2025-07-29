@@ -49,6 +49,7 @@ public class ServerskaForma extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonPOKRENI.setText("POKRENI SERVER");
         jButtonPOKRENI.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +57,7 @@ public class ServerskaForma extends javax.swing.JFrame {
                 jButtonPOKRENIActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonPOKRENI, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 102, -1, 51));
 
         jButtonZAUSTAVI.setText("ZAUSTAVI SERVER");
         jButtonZAUSTAVI.addActionListener(new java.awt.event.ActionListener() {
@@ -63,10 +65,14 @@ public class ServerskaForma extends javax.swing.JFrame {
                 jButtonZAUSTAVIActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonZAUSTAVI, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 102, -1, 51));
 
         jLabel1.setText("Status:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 22, -1, -1));
+        getContentPane().add(jLabelStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 66, -1, -1));
 
         jLabelSTATUS.setText("jLabel3");
+        getContentPane().add(jLabelSTATUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 22, -1, -1));
 
         jMenu1.setText("KONFIGURACIJA");
 
@@ -89,43 +95,6 @@ public class ServerskaForma extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelSTATUS))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabelStatus))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jButtonPOKRENI)
-                        .addGap(356, 356, 356)
-                        .addComponent(jButtonZAUSTAVI)))
-                .addContainerGap(398, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabelSTATUS))
-                .addGap(28, 28, 28)
-                .addComponent(jLabelStatus)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonPOKRENI, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonZAUSTAVI, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(389, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

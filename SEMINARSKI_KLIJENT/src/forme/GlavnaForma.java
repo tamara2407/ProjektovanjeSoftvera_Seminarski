@@ -19,8 +19,9 @@ public class GlavnaForma extends javax.swing.JFrame {
     public GlavnaForma() {
         initComponents();
         setLocationRelativeTo(null);
-        //this.setExtendedState(GlavnaForma.MAXIMIZED_BOTH);
+        this.setExtendedState(GlavnaForma.MAXIMIZED_BOTH);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Plesna škola VibeMotion");
     }
 
     /**
@@ -32,10 +33,12 @@ public class GlavnaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabelUlogovani = new javax.swing.JLabel();
         jButtonKreiraj = new javax.swing.JButton();
         jButtonIzmeni = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -52,15 +55,37 @@ public class GlavnaForma extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/forme/GlavnaForma_Pozadina.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("ULOGOVANI:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
+        jLabelUlogovani.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelUlogovani.setForeground(new java.awt.Color(0, 0, 0));
         jLabelUlogovani.setText("ime i prezime");
+        getContentPane().add(jLabelUlogovani, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 300, -1));
 
+        jButtonKreiraj.setBackground(new java.awt.Color(0, 153, 153));
+        jButtonKreiraj.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButtonKreiraj.setForeground(new java.awt.Color(0, 0, 0));
         jButtonKreiraj.setText("Kreiraj evidenciju radionice");
+        getContentPane().add(jButtonKreiraj, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 350, 80));
 
+        jButtonIzmeni.setBackground(new java.awt.Color(0, 153, 153));
+        jButtonIzmeni.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButtonIzmeni.setForeground(new java.awt.Color(0, 0, 0));
         jButtonIzmeni.setText("Izmeni evidenciju radionice");
+        getContentPane().add(jButtonIzmeni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 350, 80));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/forme/GlavnaForma_Pozadina.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 810));
 
         jMenu1.setText("Instruktor");
 
@@ -156,35 +181,6 @@ public class GlavnaForma extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelUlogovani))
-                    .addComponent(jButtonIzmeni, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonKreiraj, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(363, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabelUlogovani))
-                .addGap(91, 91, 91)
-                .addComponent(jButtonKreiraj, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jButtonIzmeni, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -249,6 +245,8 @@ public class GlavnaForma extends javax.swing.JFrame {
     private javax.swing.JButton jButtonIzmeni;
     private javax.swing.JButton jButtonKreiraj;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelUlogovani;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
