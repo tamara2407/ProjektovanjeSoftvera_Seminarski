@@ -29,7 +29,7 @@ public class KreirajFiguruSO extends ApstraktnaGenerickaOperacija{
         
         Figura postojeca = (Figura) broker.get(novaFigura, uslov);
         if (postojeca != null) {
-        throw new FiguraVecPostojiException("Figura sa tim nazivom već postoji.");
+        throw new FiguraVecPostojiException("Sistem ne moze da kreira figuru");
 }
         
 //        List<Figura> sveFigure = broker.getAll(novaFigura, uslov);

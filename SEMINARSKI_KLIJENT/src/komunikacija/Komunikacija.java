@@ -77,12 +77,11 @@ public class Komunikacija {
         posiljalac.posalji(zahtev);
         
         Odgovor odg = (Odgovor) primalac.primi();
-        if(odg.getOdgovor()==null){
-            System.out.println("USPESNO");
+        if(odg.getOdgovor()!=null){
+            System.out.println("USPEŠNO");
         }else{
-            System.out.println("GRESKA");
-            ((Exception)odg.getOdgovor()).printStackTrace();
-            throw new Exception("GRESKA");
+            Exception e = (Exception) odg.getOdgovor();
+            throw e;
         }
         
     }

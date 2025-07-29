@@ -42,7 +42,7 @@ public class LoginController {
                 
                 if(ulogovani==null){
                     JOptionPane.showMessageDialog(lf,"Korisničko ime i šifra nisu ispravni","GREŠKA", JOptionPane.ERROR_MESSAGE);
-
+                    return;
                 }else{
                     Cordinator.getInstance().setUlogovani(ulogovani);
                     JOptionPane.showMessageDialog(lf,"Korisničko ime i šifra su ispravni","USPEH", JOptionPane.INFORMATION_MESSAGE);

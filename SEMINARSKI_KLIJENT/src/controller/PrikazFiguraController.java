@@ -33,8 +33,11 @@ public class PrikazFiguraController {
             public void actionPerformed(ActionEvent e) {
                 int red = pff.getjTableFigure().getSelectedRow();
                 if(red==-1){
-                    JOptionPane.showMessageDialog(pff, "Sistem ne može da obriše proizvod", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(pff, "Sistem ne može da nađe figuru", "GREŠKA", JOptionPane.ERROR_MESSAGE);
                 }else{
+                    
+                    JOptionPane.showMessageDialog(pff, "Sistem je našao figuru", "NEUSPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+
                     int potvrda = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete figuru?", "POTVRDA", JOptionPane.YES_NO_OPTION);
                     if (potvrda == JOptionPane.NO_OPTION || potvrda == JOptionPane.CLOSED_OPTION) {
                         return;
@@ -44,7 +47,7 @@ public class PrikazFiguraController {
                     Figura f = mtf.getLista().get(red);
                     try{
                         komunikacija.Komunikacija.getInstance().obrisiFiguru(f);
-                        JOptionPane.showMessageDialog(pff, "Sistem je uspešno obrisao proizvod", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(pff, "Sistem je obrisao figuru", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
                         pripremiFormu();
                     }catch(Exception ex){
                         JOptionPane.showMessageDialog(pff, ex.getMessage(), "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
@@ -63,8 +66,10 @@ public class PrikazFiguraController {
             public void actionPerformed(ActionEvent e) {
                 int red = pff.getjTableFigure().getSelectedRow();
                 if(red==-1){
-                    JOptionPane.showMessageDialog(pff, "Morate selektovati figuru!", "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(pff, "Sistem ne može da nađe figuru", "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
                 }else{
+                    JOptionPane.showMessageDialog(pff, "Sistem je našao figuru", "NEUSPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+
                     ModelTabeleFigura mtf = (ModelTabeleFigura) pff.getjTableFigure().getModel();
                     Figura f = mtf.getLista().get(red);
                     cordinator.Cordinator.getInstance().dodajParam("figura", f);

@@ -73,7 +73,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="jButtonObrisi">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Obrisi"/>
+        <Property name="text" type="java.lang.String" value="\ud83d\uddd1 Obrisi" containsInvalidXMLChars="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAzuriraj">

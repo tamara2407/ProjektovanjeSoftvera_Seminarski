@@ -5,6 +5,7 @@
 package operacije.login;
 
 import domen.Instruktor;
+import exception.LoginException;
 import java.util.List;
 import operacije.ApstraktnaGenerickaOperacija;
 
@@ -24,7 +25,8 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
     }
     
     protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
-        instruktor = (Instruktor) param;
+    
+    instruktor = (Instruktor) param;
 
     String uslov = " WHERE korisnickoIme = '" + instruktor.getKorisnickoIme() +
                    "' AND lozinka = '" + instruktor.getLozinka() + "'";
@@ -32,6 +34,12 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
     instruktor = (Instruktor) broker.get(instruktor, uslov);
 
     System.out.println("LOGIN Operacija: " + instruktor);
+    
+//    if (instruktor == null) {
+//        throw new LoginException("Korisničko ime i šifra nisu ispravni");
+//
+//    }
+    
 }
 
     

@@ -19,7 +19,7 @@ public class ObrisiFiguruSO extends ApstraktnaGenerickaOperacija{
     @Override
     protected void preduslovi(Object param) throws Exception {
         if(param==null || !(param instanceof Figura)){
-            throw new Exception("Sistem ne moze da obrise figuru");
+            throw new Exception("Sistem ne moze da obriše figuru");
         }
         
         
@@ -34,7 +34,7 @@ public class ObrisiFiguruSO extends ApstraktnaGenerickaOperacija{
         boolean proizvodPostoji = !stavke.isEmpty();
 
         if (proizvodPostoji) {
-            throw new FiguraNeMozeDaSeObriseException("Figura postoji u nekoj stavci evidencije radionice.");
+            throw new FiguraNeMozeDaSeObriseException("Sistem ne moze da obriše figuru");
 
         }
         

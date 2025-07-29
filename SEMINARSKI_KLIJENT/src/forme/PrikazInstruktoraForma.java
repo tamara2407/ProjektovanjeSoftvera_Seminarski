@@ -37,8 +37,6 @@ public class PrikazInstruktoraForma extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableInstruktori = new javax.swing.JTable();
-        jButtonObrisi = new javax.swing.JButton();
-        jButtonAzuriraj = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldIme = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -61,15 +59,6 @@ public class PrikazInstruktoraForma extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableInstruktori);
 
-        jButtonObrisi.setText("🗑️ Obrisi");
-        jButtonObrisi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonObrisiActionPerformed(evt);
-            }
-        });
-
-        jButtonAzuriraj.setText("📝 Ažuriraj");
-
         jLabel1.setText("ime");
 
         jLabel2.setText("prezime");
@@ -89,31 +78,25 @@ public class PrikazInstruktoraForma extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(450, 450, 450)
-                        .addComponent(jButtonAzuriraj, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(jLabel2)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(31, 31, 31)
+                            .addComponent(jLabel1)
+                            .addGap(39, 39, 39)
+                            .addComponent(jTextFieldIme, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(50, 50, 50)
+                            .addComponent(jButtonPretrazi, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextFieldPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(jLabel1)
-                                .addGap(39, 39, 39)
-                                .addComponent(jTextFieldIme, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(jButtonPretrazi, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonResetuj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jButtonResetuj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -135,11 +118,7 @@ public class PrikazInstruktoraForma extends javax.swing.JFrame {
                     .addComponent(jTextFieldPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonAzuriraj, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,21 +128,15 @@ public class PrikazInstruktoraForma extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPrezimeActionPerformed
 
-    private void jButtonObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonObrisiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonObrisiActionPerformed
-
-    public JButton getjButtonObrisi() {
-        return jButtonObrisi;
-    }
+//    public JButton getjButtonObrisi() {
+//        return jButtonObrisi;
+//    }
 
     public JTable getjTableInstruktori() {
         return jTableInstruktori;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAzuriraj;
-    private javax.swing.JButton jButtonObrisi;
     private javax.swing.JButton jButtonPretrazi;
     private javax.swing.JButton jButtonResetuj;
     private javax.swing.JLabel jLabel1;
@@ -173,14 +146,14 @@ public class PrikazInstruktoraForma extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldIme;
     private javax.swing.JTextField jTextFieldPrezime;
     // End of variables declaration//GEN-END:variables
-
-    public void addBtnObrisiActionListener(ActionListener actionListener) {
-        jButtonObrisi.addActionListener(actionListener);
-    }
-    
-    public void addBtnAzurirajActionListener(ActionListener actionListener) {
-        jButtonAzuriraj.addActionListener(actionListener);
-    }
+//
+//    public void addBtnObrisiActionListener(ActionListener actionListener) {
+//        jButtonObrisi.addActionListener(actionListener);
+//    }
+//    
+//    public void addBtnAzurirajActionListener(ActionListener actionListener) {
+//        jButtonAzuriraj.addActionListener(actionListener);
+//    }
     public void addBtnPretraziActionListener(ActionListener actionListener) {
         jButtonPretrazi.addActionListener(actionListener);
     }

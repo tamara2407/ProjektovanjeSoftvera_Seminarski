@@ -27,34 +27,35 @@ public class PrikazPolaznikaController {
 
     private void addActionListeners() {
         
-        ppf.addBtnObrisiActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int red = ppf.getjTablePolaznici().getSelectedRow();
-                if(red==-1){
-                    JOptionPane.showMessageDialog(ppf, "Morate selektovati polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
-                }else{
-                    
-                    int potvrda = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete polaznika?", "POTVRDA", JOptionPane.YES_NO_OPTION);
-                    if (potvrda == JOptionPane.NO_OPTION || potvrda == JOptionPane.CLOSED_OPTION) {
-                        return;
-                    }
-                    
-                    ModelTabelePolaznik mtp = (ModelTabelePolaznik) ppf.getjTablePolaznici().getModel();
-                    Polaznik p = mtp.getLista().get(red);
-                    try{
-                        komunikacija.Komunikacija.getInstance().obrisiPolaznika(p);
-                        JOptionPane.showMessageDialog(ppf, "Sistem je uspešno obrisao polaznika", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
-                        pripremiFormu();
-                    }catch(Exception ex){
-                        JOptionPane.showMessageDialog(ppf, ex.getMessage(), "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-     
-            }
-                  
-            
-        });
+//        ppf.addBtnObrisiActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int red = ppf.getjTablePolaznici().getSelectedRow();
+//                if(red==-1){
+//                    JOptionPane.showMessageDialog(ppf, "Sistem ne može da nađe polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+//                }else{
+//                    JOptionPane.showMessageDialog(ppf, "Sistem je našao polaznika", "NEUSPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+//
+//                    int potvrda = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete polaznika?", "POTVRDA", JOptionPane.YES_NO_OPTION);
+//                    if (potvrda == JOptionPane.NO_OPTION || potvrda == JOptionPane.CLOSED_OPTION) {
+//                        return;
+//                    }
+//                    
+//                    ModelTabelePolaznik mtp = (ModelTabelePolaznik) ppf.getjTablePolaznici().getModel();
+//                    Polaznik p = mtp.getLista().get(red);
+//                    try{
+//                        komunikacija.Komunikacija.getInstance().obrisiPolaznika(p);
+//                        JOptionPane.showMessageDialog(ppf, "Sistem je uspešno obrisao polaznika", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+//                        pripremiFormu();
+//                    }catch(Exception ex){
+//                        JOptionPane.showMessageDialog(ppf, ex.getMessage(), "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
+//                    }
+//                }
+//     
+//            }
+//                  
+//            
+//        });
         
         
         ppf.addBtnAzurirajActionListener(new ActionListener() {
@@ -64,6 +65,8 @@ public class PrikazPolaznikaController {
                 if(red==-1){
                     JOptionPane.showMessageDialog(ppf, "Morate selektovati polaznika!", "GREŠKA", JOptionPane.ERROR_MESSAGE);
                 }else{
+                    JOptionPane.showMessageDialog(ppf, "Sistem je našao polaznika", "NEUSPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+
                     ModelTabelePolaznik mtp = (ModelTabelePolaznik) ppf.getjTablePolaznici().getModel();
                     Polaznik p = mtp.getLista().get(red);
                     cordinator.Cordinator.getInstance().dodajParam("polaznik", p);

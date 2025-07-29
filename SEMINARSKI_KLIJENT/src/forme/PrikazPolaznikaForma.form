@@ -23,39 +23,36 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jButtonAzuriraj" min="-2" pref="95" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                              <Component id="jTextFieldIme" min="-2" pref="271" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldIme" min="-2" pref="271" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jTextFieldPrezime" min="-2" pref="271" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTextFieldPrezime" min="-2" pref="271" max="-2" attributes="0"/>
+                          <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
+                          <Component id="jButtonPretrazi" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
+                          <Component id="jButtonResetuj" min="-2" pref="168" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
-                      <Component id="jButtonPretrazi" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
-                      <Component id="jButtonResetuj" min="-2" pref="168" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="665" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="490" pref="490" max="-2" attributes="0"/>
-                      <Component id="jButtonAzuriraj" min="-2" pref="95" max="-2" attributes="0"/>
-                      <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
-                      <Component id="jButtonObrisi" min="-2" pref="92" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="665" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="25" max="32767" attributes="0"/>
@@ -90,21 +87,13 @@
               <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="325" max="-2" attributes="0"/>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButtonAzuriraj" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jButtonObrisi" min="-2" pref="33" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jButtonAzuriraj" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace pref="30" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButtonObrisi">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="\ud83d\uddd1&#xfe0f; Obrisi" containsInvalidXMLChars="true"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="jButtonAzuriraj">
       <Properties>
         <Property name="text" type="java.lang.String" value="\ud83d\udcdd A&#x17e;uriraj" containsInvalidXMLChars="true"/>

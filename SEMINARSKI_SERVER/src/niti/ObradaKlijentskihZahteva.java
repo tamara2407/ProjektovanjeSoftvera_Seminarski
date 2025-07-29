@@ -21,6 +21,7 @@ import java.net.Socket;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.security.auth.login.LoginException;
 import komunikacija.Odgovor;
 import komunikacija.Posiljalac;
 import komunikacija.Primalac;
@@ -54,9 +55,21 @@ public class ObradaKlijentskihZahteva extends Thread {
                 switch(zahtev.getOperacija()){
                     
                     case LOGIN:
+                        
                         Instruktor i = (Instruktor) zahtev.getParametar();
-                        i= controller.Controller.getInstance().login(i);
-                        odgovor.setOdgovor(i);
+                            i= controller.Controller.getInstance().login(i);
+                            odgovor.setOdgovor(i);
+//                        try {
+//
+//                        } catch (LoginException ivp) {
+//
+//                            odgovor.setOdgovor(ivp);
+//
+//                        } catch (Exception excp) {
+//
+//                            odgovor.setOdgovor(excp);
+//                        }
+
                         break;
                         
                     case UCITAJ_INSTRUKTORE:

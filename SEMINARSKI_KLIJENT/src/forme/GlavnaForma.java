@@ -5,7 +5,10 @@
 package forme;
 
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 /**
  *
@@ -22,6 +25,9 @@ public class GlavnaForma extends javax.swing.JFrame {
         this.setExtendedState(GlavnaForma.MAXIMIZED_BOTH);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Plesna škola VibeMotion");
+        
+        prikaziDatum();
+        prikaziVreme();
     }
 
     /**
@@ -38,7 +44,11 @@ public class GlavnaForma extends javax.swing.JFrame {
         jLabelUlogovani = new javax.swing.JLabel();
         jButtonKreiraj = new javax.swing.JButton();
         jButtonIzmeni = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabelVreme = new javax.swing.JLabel();
+        jLabelDatum = new javax.swing.JLabel();
+        jLabelPozadina = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -61,7 +71,7 @@ public class GlavnaForma extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("ULOGOVANI:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
@@ -83,9 +93,28 @@ public class GlavnaForma extends javax.swing.JFrame {
         jButtonIzmeni.setText("Izmeni evidenciju radionice");
         getContentPane().add(jButtonIzmeni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 350, 80));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/forme/GlavnaForma_Pozadina.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 810));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel4.setText("Datum:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel5.setText("Vreme:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, -1, -1));
+
+        jLabelVreme.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelVreme.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jLabelVreme, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 620, -1, -1));
+
+        jLabelDatum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelDatum.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jLabelDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 550, -1, -1));
+
+        jLabelPozadina.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelPozadina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/forme/GlavnaForma_Pozadina.png"))); // NOI18N
+        jLabelPozadina.setText("jLabel2");
+        getContentPane().add(jLabelPozadina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 810));
 
         jMenu1.setText("Instruktor");
 
@@ -245,9 +274,13 @@ public class GlavnaForma extends javax.swing.JFrame {
     private javax.swing.JButton jButtonIzmeni;
     private javax.swing.JButton jButtonKreiraj;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelDatum;
+    private javax.swing.JLabel jLabelPozadina;
     private javax.swing.JLabel jLabelUlogovani;
+    private javax.swing.JLabel jLabelVreme;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -264,4 +297,23 @@ public class GlavnaForma extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
+
+
+    private void prikaziVreme() {
+        Timer timer = new Timer(1000, e -> {
+            String vreme = new SimpleDateFormat("HH:mm:ss").format(new Date());
+            jLabelVreme.setText(vreme);
+        });
+        timer.start();
+    }
+
+    private void prikaziDatum() {
+        Timer timer = new Timer(1000, e -> {
+            String datum = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+            jLabelDatum.setText(datum);
+        });
+        timer.start();
+
+    }
+
 }
