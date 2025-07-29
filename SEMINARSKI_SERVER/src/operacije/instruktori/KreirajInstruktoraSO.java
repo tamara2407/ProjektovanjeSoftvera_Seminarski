@@ -25,12 +25,16 @@ public class KreirajInstruktoraSO extends ApstraktnaGenerickaOperacija{
         Instruktor noviInstruktor = (Instruktor) param;
 
         String uslov = " WHERE korisnickoIme = '" + noviInstruktor.getKorisnickoIme()+ "'";
-        List<Instruktor> sviInstruktori = broker.getAll(noviInstruktor, uslov);
-
-       
-        if (!sviInstruktori.isEmpty()) {
+        
+        Instruktor postojeci = (Instruktor) broker.get(noviInstruktor, uslov);
+        if (postojeci != null) {
             throw new InstruktorVecPostojiException("Instruktor sa tim korisničkim imenom već postoji.");
         }
+        
+//        List<Instruktor> sviInstruktori = broker.getAll(noviInstruktor, uslov);
+//        if (!sviInstruktori.isEmpty()) {
+//            throw new InstruktorVecPostojiException("Instruktor sa tim korisničkim imenom već postoji.");
+//    }
     }
 
     @Override

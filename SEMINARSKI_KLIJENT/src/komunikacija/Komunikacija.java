@@ -93,7 +93,7 @@ public class Komunikacija {
         posiljalac.posalji(zahtev);
         Odgovor odgovor = (Odgovor) primalac.primi();
         if(odgovor.getOdgovor()==null){
-            System.out.println("USPEH");
+            System.out.println("USPEŠNO");
         }else{
             Exception e = (Exception) odgovor.getOdgovor();
             throw e;
@@ -206,15 +206,17 @@ public class Komunikacija {
 //        }
 //    }
 
-    public void dodajKategoriju(Kategorija k) {
+    public void dodajKategoriju(Kategorija k) throws Exception {
         Zahtev zahtev = new Zahtev(Operacija.DODAJ_KATEGORIJU, k);
         posiljalac.posalji(zahtev);
-        Odgovor odgovor = (Odgovor) primalac.primi();
-        if(odgovor.getOdgovor()==null){
+        Odgovor odg = (Odgovor) primalac.primi();
+        if(odg.getOdgovor()==null){
             System.out.println("USPEH");
         }else{
-            System.out.println("GRESKA");
-        }    }
+            Exception e = (Exception) odg.getOdgovor();
+            throw e;
+        }   
+}
 
 //    public void azurirajKategoriju(Kategorija k) {
 //        Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_KATEGORIJU, k);

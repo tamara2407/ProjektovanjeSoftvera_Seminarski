@@ -22,26 +22,37 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
             throw new Exception("Sistem ne moze da pronadje instruktora");
         }
     }
+    
+    protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
+        instruktor = (Instruktor) param;
+
+    String uslov = " WHERE korisnickoIme = '" + instruktor.getKorisnickoIme() +
+                   "' AND lozinka = '" + instruktor.getLozinka() + "'";
+
+    instruktor = (Instruktor) broker.get(instruktor, uslov);
+
+    System.out.println("LOGIN Operacija: " + instruktor);
+}
 
     
     //true false, ne proveravaj sve
-    @Override
-    protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
-        List<Instruktor> sviInstruktori = broker.getAll((Instruktor) param,null);
-        System.out.println("KLASA LoginOperacija SO "+sviInstruktori);
-        if(sviInstruktori.contains((Instruktor) param)){
-            for(Instruktor i : sviInstruktori){
-                if(i.equals((Instruktor)param)){
-                    instruktor = i;
-                    return;
-                }
-            }
-
-        }else{
-            instruktor=null;
-        }
-        
-    }
+//    @Override
+//    protected void izvrsiOperaciju(Object param, String kljuc) throws Exception {
+//        List<Instruktor> sviInstruktori = broker.getAll((Instruktor) param,null);
+//        System.out.println("KLASA LoginOperacija SO "+sviInstruktori);
+//        if(sviInstruktori.contains((Instruktor) param)){
+//            for(Instruktor i : sviInstruktori){
+//                if(i.equals((Instruktor)param)){
+//                    instruktor = i;
+//                    return;
+//                }
+//            }
+//
+//        }else{
+//            instruktor=null;
+//        }
+//        
+//    }
 
     public Instruktor getInstruktor() {
         return instruktor;

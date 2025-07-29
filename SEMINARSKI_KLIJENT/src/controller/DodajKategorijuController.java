@@ -61,7 +61,7 @@ public class DodajKategorijuController {
                     JOptionPane.showMessageDialog(dkf, "Sistem je kreirao kategoriju", "USPEŠNO",JOptionPane.INFORMATION_MESSAGE);
                     dkf.dispose();
                 }catch(Exception exc){
-                    JOptionPane.showMessageDialog(dkf, "Sistem ne može da kreira kategoriju", "NEUSPEŠNO",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dkf, exc.getMessage(), "NEUSPEŠNO",JOptionPane.ERROR_MESSAGE);
                 }
                 
             }

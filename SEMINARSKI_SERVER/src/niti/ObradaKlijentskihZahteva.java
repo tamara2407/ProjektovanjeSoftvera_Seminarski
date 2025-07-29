@@ -13,6 +13,7 @@ import domen.StavkaEvidencijeRadionice;
 import exception.FiguraNeMozeDaSeObriseException;
 import exception.FiguraVecPostojiException;
 import exception.InstruktorVecPostojiException;
+import exception.KategorijaVecPostojiException;
 import exception.PolaznikNeMozeDaSeObriseException;
 import exception.PolaznikVecPostojiException;
 import java.io.IOException;
@@ -75,7 +76,7 @@ public class ObradaKlijentskihZahteva extends Thread {
                         
                     case DODAJ_INSTRUKTORA:
                         Instruktor instruktor = (Instruktor) zahtev.getParametar();
-                                                try {
+                        try {
                             controller.Controller.getInstance().dodajInstruktora(instruktor);
                             odgovor.setOdgovor(null);
                         } catch (InstruktorVecPostojiException ivp) {
@@ -160,8 +161,18 @@ public class ObradaKlijentskihZahteva extends Thread {
                         
                     case DODAJ_KATEGORIJU:
                         Kategorija k = (Kategorija) zahtev.getParametar();
-                        controller.Controller.getInstance().dodajKategorija(k);
-                        odgovor.setOdgovor(null);
+                        try {
+                            controller.Controller.getInstance().dodajKategorija(k);
+                            odgovor.setOdgovor(null);
+                        } catch (KategorijaVecPostojiException kvp) {
+
+                            odgovor.setOdgovor(kvp);
+
+                        } catch (Exception excp) {
+
+                            odgovor.setOdgovor(excp);
+                        }
+
                         break;
                         
                     case AZURIRAJ_KATEGORIJU:
@@ -192,9 +203,6 @@ public class ObradaKlijentskihZahteva extends Thread {
                         break;
                         
                     case DODAJ_POLAZNIKA:
-//                        Polaznik polaznik = (Polaznik) zahtev.getParametar();
-//                        controller.Controller.getInstance().dodajPolaznika(polaznik);
-//                        odgovor.setOdgovor(null);
                         Polaznik Polaznik = (Polaznik) zahtev.getParametar();
                         try {
                             controller.Controller.getInstance().dodajPolaznika(Polaznik);

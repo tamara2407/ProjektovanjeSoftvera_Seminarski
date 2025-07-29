@@ -19,17 +19,17 @@ public class KreirajPolaznikaSO extends ApstraktnaGenerickaOperacija{
     protected void preduslovi(Object param) throws Exception {
         if (param == null || !(param instanceof Polaznik)) {
 
-            throw new Exception("Sistem ne moze da kreira kupca");
+            throw new Exception("Sistem ne moze da kreira polaznika");
         }
+        
         Polaznik noviPolaznik = (Polaznik) param;
 
         String uslov = " JOIN kategorija ON polaznik.kategorija = kategorija.kategorijaID WHERE email = '" + noviPolaznik.getEmail() + "'";
-        List<Polaznik> sviPolaznici = broker.getAll(noviPolaznik, uslov);
-
-       
-        if (!sviPolaznici.isEmpty()) {
-            throw new PolaznikVecPostojiException("Polazink sa tim email-om već postoji.");
+        Polaznik postojeci = (Polaznik) broker.get(noviPolaznik, uslov);
+        if (postojeci != null) {
+            throw new PolaznikVecPostojiException("Polaznik sa tim emailom već postoji.");
         }
+
 
     }
 

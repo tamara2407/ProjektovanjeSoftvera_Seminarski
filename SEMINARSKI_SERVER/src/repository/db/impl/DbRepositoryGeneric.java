@@ -80,5 +80,30 @@ public class DbRepositoryGeneric implements DbRepository<ApstraktniDomenskiObjek
         return lista;
         
     }
+
+    @Override
+    public ApstraktniDomenskiObjekat get(ApstraktniDomenskiObjekat param, String uslov) throws Exception {
+        
+        ApstraktniDomenskiObjekat novi = null;
+        String upit = "SELECT * FROM " + param.vratiNazivTabele();
+        if(uslov!=null){
+            upit+=uslov; 
+        }
+        
+        System.out.println(upit);
+        
+        Statement st = DbConnectionFactory.getInstance().getConnection().createStatement();
+        ResultSet rs = st.executeQuery(upit);
+        List<ApstraktniDomenskiObjekat> lista = param.vratiListu(rs);
+        if (!lista.isEmpty()) {
+            novi = lista.get(0);
+        }
+        
+        
+        rs.close();
+        st.close();
+        return novi;
+        
+    }
     
 }

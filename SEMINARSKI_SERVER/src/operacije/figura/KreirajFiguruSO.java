@@ -26,11 +26,17 @@ public class KreirajFiguruSO extends ApstraktnaGenerickaOperacija{
         Figura novaFigura = (Figura) param;
 
         String uslov = " WHERE naziv = '" + novaFigura.getNaziv() + "'";
-        List<Figura> sveFigure = broker.getAll(novaFigura, uslov);
-
-        if (!sveFigure.isEmpty()) {
-            throw new FiguraVecPostojiException("Figura sa tim nazivom već postoji.");
-        }
+        
+        Figura postojeca = (Figura) broker.get(novaFigura, uslov);
+        if (postojeca != null) {
+        throw new FiguraVecPostojiException("Figura sa tim nazivom već postoji.");
+}
+        
+//        List<Figura> sveFigure = broker.getAll(novaFigura, uslov);
+//
+//        if (!sveFigure.isEmpty()) {
+//            throw new FiguraVecPostojiException("Figura sa tim nazivom već postoji.");
+//        }
 
     }
     
