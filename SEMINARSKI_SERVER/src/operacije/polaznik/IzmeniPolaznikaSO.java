@@ -5,6 +5,7 @@
 package operacije.polaznik;
 
 import domen.Polaznik;
+import exception.PolaznikVecPostojiException;
 import operacije.ApstraktnaGenerickaOperacija;
 
 /**
@@ -18,6 +19,15 @@ public class IzmeniPolaznikaSO extends ApstraktnaGenerickaOperacija {
 
         if (param == null || !(param instanceof Polaznik)) {
             throw new Exception("Sistem ne moze da izmeni polaznika");
+        }
+        
+        
+        Polaznik noviPolaznik = (Polaznik) param;
+
+        String uslov = " JOIN kategorija ON polaznik.kategorija = kategorija.kategorijaID WHERE email = '" + noviPolaznik.getEmail() + "'";
+        Polaznik postojeci = (Polaznik) broker.get(noviPolaznik, uslov);
+        if (postojeci != null) {
+            throw new PolaznikVecPostojiException("Sistem ne može da zapamti polaznika");
         }
 
     }

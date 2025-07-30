@@ -28,9 +28,6 @@ public class Odgovor implements Serializable {
     public void setOdgovor(Object odgovor) {
         this.odgovor = odgovor;
     }
-    
-    
-    
-    
+
     
 }

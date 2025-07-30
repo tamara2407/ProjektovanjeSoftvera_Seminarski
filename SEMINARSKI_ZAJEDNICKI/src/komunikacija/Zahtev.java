@@ -39,5 +39,4 @@ public class Zahtev implements Serializable {
         this.parametar = parametar;
     }
     
-    
 }

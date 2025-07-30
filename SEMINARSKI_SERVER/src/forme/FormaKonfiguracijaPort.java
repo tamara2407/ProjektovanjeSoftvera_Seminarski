@@ -39,6 +39,8 @@ public class FormaKonfiguracijaPort extends javax.swing.JDialog {
 
         jLabel1.setText("Port:");
 
+        jTextFieldPort.setText("9000");
+
         jButtonSacuvaj.setText("Sacuvaj");
         jButtonSacuvaj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

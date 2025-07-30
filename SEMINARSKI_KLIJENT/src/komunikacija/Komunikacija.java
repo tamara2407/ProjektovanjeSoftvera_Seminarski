@@ -251,15 +251,15 @@ public class Komunikacija {
         return polaznici;
     }
 
-    public void azurirajPolaznika(Polaznik p) {
+    public void azurirajPolaznika(Polaznik p) throws Exception {
         Zahtev zahtev = new Zahtev(Operacija.AZURIRAJ_POLAZNIKA, p);
         posiljalac.posalji(zahtev);
         Odgovor odgovor = (Odgovor) primalac.primi();
         if(odgovor.getOdgovor()==null){
             System.out.println("USPEŠNO");
-            cordinator.Cordinator.getInstance().osveziFormuPolaznik();
         }else{
-            System.out.println("GREŠKA");
+            Exception e = (Exception) odgovor.getOdgovor();
+            throw e;
         }
         
     }

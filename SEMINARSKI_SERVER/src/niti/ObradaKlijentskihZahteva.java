@@ -233,8 +233,17 @@ public class ObradaKlijentskihZahteva extends Thread {
                         
                     case AZURIRAJ_POLAZNIKA:
                         Polaznik aPolaznik = (Polaznik) zahtev.getParametar();
+                        try {
                         controller.Controller.getInstance().azurirajPolaznika(aPolaznik);
                         odgovor.setOdgovor(null);
+                        } catch (PolaznikVecPostojiException pvp) {
+
+                            odgovor.setOdgovor(pvp);
+
+                        } catch (Exception excp) {
+
+                            odgovor.setOdgovor(excp);
+                        }
                         break;
                         
                     case DODAJ_EVIDENCIJU_RADIONICE:

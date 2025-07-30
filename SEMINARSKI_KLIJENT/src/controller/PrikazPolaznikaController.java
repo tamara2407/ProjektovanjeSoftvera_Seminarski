@@ -63,7 +63,7 @@ public class PrikazPolaznikaController {
             public void actionPerformed(ActionEvent e) {
                 int red = ppf.getjTablePolaznici().getSelectedRow();
                 if(red==-1){
-                    JOptionPane.showMessageDialog(ppf, "Morate selektovati polaznika!", "GREŠKA", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(ppf, "Sistem ne može da nađe polaznika", "GREŠKA", JOptionPane.ERROR_MESSAGE);
                 }else{
                     JOptionPane.showMessageDialog(ppf, "Sistem je našao polaznika", "NEUSPEŠNO", JOptionPane.INFORMATION_MESSAGE);
 
@@ -80,27 +80,35 @@ public class PrikazPolaznikaController {
         });
         
         
-//        ppf.addBtnPretraziActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                String ime = ppf.getjTextFieldIme().getText().trim();
-//                String prezime = ppf.getjTextFieldPrezime().getText().trim();
-//                
-//                ModelTabelePolaznik mti = (ModelTabelePolaznik) ppf.getjTablePolaznici().getModel();
-//                mti.pretrazi(ime,prezime);
-//                
-//            }
-//        });
-//        
-//        
-//                pif.addBtnResetujActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                pripremiFormu();
-//                
-//            }
-//            
-//        });
+        ppf.addBtnPretraziActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String ime = ppf.getjTextFieldIme().getText().trim();
+                String prezime = ppf.getjTextFieldPrezime().getText().trim();
+                
+                ModelTabelePolaznik mti = (ModelTabelePolaznik) ppf.getjTablePolaznici().getModel();
+                mti.pretrazi(ime,prezime);
+                
+                if (mti.getLista().isEmpty()) {
+                    JOptionPane.showMessageDialog(ppf, "Sistem ne može da nađe polaznike po zadatim kriterijumima", "NEUSPEŠNO", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(ppf, "Sistem je našao polaznike po zadatim kriterijumima", "USPEŠNO", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+            }
+        });
+        
+        
+                ppf.addBtnResetujActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pripremiFormu();
+                ppf.getjTextFieldIme().setText("");
+                ppf.getjTextFieldPrezime().setText("");
+                
+            }
+            
+        });
         
     }
 

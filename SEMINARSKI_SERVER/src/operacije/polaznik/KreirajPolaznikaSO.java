@@ -27,7 +27,7 @@ public class KreirajPolaznikaSO extends ApstraktnaGenerickaOperacija{
         String uslov = " JOIN kategorija ON polaznik.kategorija = kategorija.kategorijaID WHERE email = '" + noviPolaznik.getEmail() + "'";
         Polaznik postojeci = (Polaznik) broker.get(noviPolaznik, uslov);
         if (postojeci != null) {
-            throw new PolaznikVecPostojiException("Polaznik sa tim emailom već postoji.");
+            throw new PolaznikVecPostojiException("Sistem ne može da kreira polaznika");
         }
 
 

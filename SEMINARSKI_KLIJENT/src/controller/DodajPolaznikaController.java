@@ -160,7 +160,7 @@ public class DodajPolaznikaController {
                     JOptionPane.showMessageDialog(dpf, "Sistem je zapamtio polaznika", "USPEŠNO",JOptionPane.INFORMATION_MESSAGE);
                     dpf.dispose();
                 }catch(Exception exc){
-                    JOptionPane.showMessageDialog(dpf, "Sistem ne može da zapamti polaznika", "NEUSPEŠNO",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(dpf, exc.getMessage(), "NEUSPEŠNO",JOptionPane.ERROR_MESSAGE);
                 }
                 
             }
